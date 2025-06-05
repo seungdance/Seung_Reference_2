@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>Residuals – Monique Smith-McDowell</title>
+    <style>
+      .work-container {
+        padding: 8rem 2rem 4rem;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      .work-header {
+        margin-bottom: 4rem;
+        text-align: center;
+      }
+
+      .work-title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .work-year {
+        font-size: 1.2rem;
+        color: #666;
+      }
+
+      .work-layout-grid {
+        display: flex;
+        gap: 3rem;
+        align-items: flex-start;
+        margin-bottom: 3rem;
+      }
+
+      .work-layout-grid > .work-image {
+        flex: 0 1 45%;
+      }
+
+      .work-layout-grid > .work-text-content {
+        flex: 1 1 50%;
+      }
+
+      .work-credits {
+        background: #f9f9f9;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 2rem 0;
+        box-sizing: border-box;
+      }
+
+      .work-credits-content-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .work-credits h3 {
+        margin-bottom: 1.5rem;
+        color: #333;
+      }
+
+      .work-credits p {
+        margin: 0.5rem 0;
+        color: #666;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-bottom: 2rem;
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .work-container {
+          padding: 6rem 1rem 2rem;
+        }
+
+        .work-title {
+          font-size: 2.5rem;
+        }
+
+        .work-layout-grid {
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .work-layout-grid > .work-image,
+        .work-layout-grid > .work-text-content {
+          flex-basis: 100%;
+        }
+      }
+
+      .language-toggle {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        z-index: 1101;
+      }
+
+      .language-toggle button {
+        background: none;
+        border: none;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.3s, color 0.3s;
+      }
+
+      .language-toggle button.active {
+        opacity: 1;
+        font-weight: 500;
+        color: #ff69b4;
+      }
+
+      .language-toggle button:hover {
+        opacity: 1;
+        color: #ff1493;
+      }
+
+      @media (max-width: 768px) {
+        .language-toggle {
+          top: 1rem;
+          right: 1rem;
+        }
+      }
+
+      .work-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      .work-description p {
+        margin-bottom: 2.5rem;
+      }
+
+      .work-description p:last-child {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="interactive-bg"></canvas>
+    <header>
+      <nav>
+        <a href="../index.html" data-en>Home</a>
+        <a href="../index.html" data-de>Start</a>
+        <a href="../bio.html" data-en>Bio</a>
+        <a href="../bio.html" data-de>Über mich</a>
+        <a href="../work.html" data-en>Work</a>
+        <a href="../work.html" data-de>Arbeiten</a>
+        <a href="../pilates.html" data-en>Pilates</a>
+        <a href="../pilates.html" data-de>Pilates</a>
+        <a href="../contact.html" data-en>Contact</a>
+        <a href="../contact.html" data-de>Kontakt</a>
+      </nav>
+    </header>
+
+    <div class="language-toggle">
+      <button onclick="toggleLanguage('en')" class="active" id="enBtn">EN</button>
+      <button onclick="toggleLanguage('de')" id="deBtn">DE</button>
+    </div>
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    <main class="work-container">
+      <a href="../work.html" class="back-link" data-en>← Back</a>
+      <a href="../work.html" class="back-link" data-de style="display: none">← Zurück</a>
+
+      <div class="work-header">
+        <h1 class="work-title">Residuals</h1>
+        <div class="work-year">2021</div>
+      </div>
+
+      <div class="work-layout-grid">
+        <div class="work-image" style="aspect-ratio: auto; border-radius: 8px; margin-bottom: 0; background: #f5f5f5; overflow: hidden">
+          <img
+            src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835315/Work_img_Residuals_1_sdurt4.jpg"
+            alt="Performance still from RESIDUALS by Sticky Trace Company"
+            style="display: block; width: 100%; height: auto; object-fit: contain" />
+        </div>
+
+        <div class="work-text-content">
+          <div class="work-description" data-en>
+            <p>
+              RESIDUALS – Bugs, A Clown and The Prey is a choreographic work by the Sticky Trace Company. In collaboration with students
+              from the Contemporary Dance School, three solos were developed that explore different perspectives on "survival."
+            </p>
+
+            <p>
+              In a preceding research phase, the dancers engaged deeply with their personal understanding of survival, survival strategies,
+              and defining moments. Together with the Sticky Trace Company, they found ways to translate these reflections into movement.
+              The three solos were interwoven and utilise a focus on visualizing emotional states through formalized body movements based on
+              the concept of embodiment.
+            </p>
+          </div>
+
+          <div class="work-description" data-de style="display: none">
+            <p>
+              RESIDUALS – Bugs, A Clown and The Prey – ist eine choreographische Arbeit der Sticky Trace Company. Zusammen mit Studentinnen
+              der Contemporary Dance School, wurden drei Soli erarbeitet, die verschiedene Perspektiven auf „Survival“ beleuchten. Die
+              Tänzerinnen haben in einem vorgelagerten Recherche-Prozess sich intensiv mit ihrem Verständnis von Überleben,
+              Überlebensstrategien und Momenten auseinandergesetzt und zusammen mit der Sticky Trace Company Übersetzungsformen gefunden.
+              Die drei Soli wurden ineinander verflochten und konzentrierten sich auf die Visualisierung emotionaler Zustände in
+              formalisierten Körperbewegungen, die auf dem Konzept der Verkörperung basieren.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-credits" data-en>
+        <div class="work-credits-content-wrapper">
+          <h3>Credits</h3>
+          <p>Concept & Choreography: Uta Engel, Ane Iselin Borgeland, Monique Smith McDowell (Sticky Trace Company)</p>
+          <p>Co-Choreography & Performance: Gloria Carobini, Lourdes Maldonado, Olivia Shoesmith</p>
+          <p>Music: Johann Sundermeier</p>
+          <p>Funded by DIEHL+RITTER/TANZPAKT RECONNECT</p>
+          <p>
+            Performances: 20.08.2021 (EDEKA, Flensburg), 27.08. (DIE PUMPE, Kiel), 04.09. (JENFELD HAUS, Hamburg), 30.09. (NORDKELLEG,
+            Rendsburg), 04.10. (Bad Oldesloe)
+          </p>
+        </div>
+      </div>
+      <div class="work-credits" data-de style="display: none">
+        <div class="work-credits-content-wrapper">
+          <h3>Credits</h3>
+          <p>Konzept & Choreographie: Uta Engel, Ane Iselin Borgeland, Monique Smith McDowell (Sticky Trace Company)</p>
+          <p>Co-Choreographie & Performance: Gloria Carobini, Lourdes Maldonado, Olivia Shoesmith</p>
+          <p>Musik: Johann Sundermeier</p>
+          <p>Gefördert von DIEHL+RITTER/TANZPAKT RECONNECT</p>
+          <p>
+            Vorstellungen: 20.08.2021 (EDEKA, Flensburg), 27.08. (DIE PUMPE, Kiel), 04.09. (JENFELD HAUS, Hamburg), 30.09. (NORDKELLEG,
+            Rendsburg), 04.10. (Bad Oldesloe)
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

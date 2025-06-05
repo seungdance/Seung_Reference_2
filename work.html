@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Monique - Works</title>
+  </head>
+  <body>
+    <div class="custom-cursor"></div>
+    <canvas id="interactive-bg"></canvas>
+    <header>
+      <nav>
+        <a href="index.html" data-en>Home</a>
+        <a href="index.html" data-de>Start</a>
+        <a href="bio.html" data-en>Bio</a>
+        <a href="bio.html" data-de>Über mich</a>
+        <a href="work.html" data-en>Work</a>
+        <a href="work.html" data-de>Arbeiten</a>
+        <a href="pilates.html" data-en>Pilates</a>
+        <a href="pilates.html" data-de>Pilates</a>
+        <a href="contact.html" data-en>Contact</a>
+        <a href="contact.html" data-de>Kontakt</a>
+      </nav>
+    </header>
+
+    <div class="language-toggle">
+      <button onclick="toggleLanguage('en')" class="active" id="enBtn">EN</button>
+      <button onclick="toggleLanguage('de')" id="deBtn">DE</button>
+    </div>
+
+    <main class="works-container">
+      <div class="works-grid">
+        <div class="work-card">
+          <div class="work-blob work-blob-1"></div>
+          <div class="work-blob work-blob-2"></div>
+          <a href="works/a-place-called-home.html">
+            <div class="work-image">
+              <img
+                src="https://res.cloudinary.com/dwlzn6c4l/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1747835253/Work_img_A_Place_Called_Home_5_kt1bw0.jpg"
+                alt="A Place Called Home" />
+            </div>
+            <div class="work-info">
+              <h2 class="work-title">A place called Home</h2>
+              <div class="work-year">2024</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="work-card">
+          <div class="work-blob work-blob-1"></div>
+          <div class="work-blob work-blob-2"></div>
+          <a href="works/in-the-black.html">
+            <div class="work-image">
+              <img
+                src="https://res.cloudinary.com/dwlzn6c4l/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1747835317/Work_img_In_the_Black_9_the_Schmidt-23.jpg_yutfcf.jpg"
+                alt="In the Black" />
+            </div>
+            <div class="work-info">
+              <h2 class="work-title">In the Black</h2>
+              <div class="work-year">2023</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="work-card">
+          <div class="work-blob work-blob-1"></div>
+          <div class="work-blob work-blob-2"></div>
+          <a href="works/residuals.html">
+            <div class="work-image">
+              <img
+                src="https://res.cloudinary.com/dwlzn6c4l/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1747835317/Work_img_Residuals_2_sh9rec.jpg"
+                alt="Residuals" />
+            </div>
+            <div class="work-info">
+              <h2 class="work-title">Residuals</h2>
+              <div class="work-year">2021</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="work-card">
+          <div class="work-blob work-blob-1"></div>
+          <div class="work-blob work-blob-2"></div>
+          <a href="works/frenzy.html">
+            <div class="work-image">
+              <img
+                src="https://res.cloudinary.com/dwlzn6c4l/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1747835327/Work_img_Franzy_2_shx4op.jpg"
+                alt="FRENZY" />
+            </div>
+            <div class="work-info">
+              <h2 class="work-title">FRENZY</h2>
+              <div class="work-year">2021</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

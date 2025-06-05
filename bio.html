@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Monique - Bio</title>
+  </head>
+  <body>
+    <div class="custom-cursor"></div>
+    <canvas id="interactive-bg"></canvas>
+    <header>
+      <nav>
+        <a href="index.html" data-en>Home</a>
+        <a href="index.html" data-de>Start</a>
+        <a href="bio.html" data-en>Bio</a>
+        <a href="bio.html" data-de>Über mich</a>
+        <a href="work.html" data-en>Work</a>
+        <a href="work.html" data-de>Arbeiten</a>
+        <a href="pilates.html" data-en>Pilates</a>
+        <a href="pilates.html" data-de>Pilates</a>
+        <a href="contact.html" data-en>Contact</a>
+        <a href="contact.html" data-de>Kontakt</a>
+      </nav>
+    </header>
+
+    <div class="language-toggle">
+      <button onclick="toggleLanguage('en')" class="active" id="enBtn">EN</button>
+      <button onclick="toggleLanguage('de')" id="deBtn">DE</button>
+    </div>
+
+    <main class="bio-container">
+      <div class="bio-header">
+        <h1 class="bio-title" data-en>Monique Smith-McDowell</h1>
+        <h1 class="bio-title" data-de>Monique Smith-McDowell</h1>
+      </div>
+
+      <div class="bio-content">
+        <img
+          src="https://res.cloudinary.com/dwlzn6c4l/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1747836981/COMPRESSED_Bio_img_5_zymoxh.jpg"
+          alt="Monique Smith-McDowell portrait"
+          class="bio-image" />
+        <div class="bio-text">
+          <div data-en>
+            <p>
+              Monique Smith-McDowell is a choreographer, performer, and audio describer for dance, born and raised in East London, UK, and
+              currently based in Hamburg, Germany. She is a graduate of the London Contemporary Dance School and through her career has had
+              the pleasure to work with Richard Alston Dance Company, Michael Turinsky, and Ursina Tossi, as well as many other great
+              artists and creators.
+            </p>
+            <p>
+              Monique's work is rooted in curiosity—exploring how diverse movement languages and genres can intersect and spark new
+              narratives and explorations. Her artistic voice is shaped by a commitment to centring marginalized perspectives, challenging
+              societal norms, and engaging deeply with sociopolitical themes. Through evocative performance and bold theatrical
+              environments, she creates spaces that provoke thought, stir emotion, and push boundaries in and out of the theatre doors.
+            </p>
+          </div>
+          <div data-de>
+            <p>
+              Monique Smith-McDowell ist Choreografin, Performerin und Audiobeschreiberin, geboren und aufgewachsen in East London,
+              Großbritannien, und derzeit in Hamburg, Deutschland, ansässig. Sie ist Absolventin der London Contemporary Dance School und
+              hatte im Laufe ihrer Karriere das Vergnügen, mit der Richard Alston Dance Company, Michael Turinsky, Ursina Tossi sowie vielen
+              weiteren großartigen Künstler*innen und Kreativen zusammenzuarbeiten.
+            </p>
+            <p>
+              Moniques Arbeit ist in Neugier verwurzelt – sie erforscht, wie verschiedene Bewegungssprachen und -genres sich überschneiden
+              und neue Narrative sowie Erkundungsräume eröffnen können. Ihre künstlerische Stimme ist geprägt von dem Bestreben,
+              marginalisierte Perspektiven in den Mittelpunkt zu stellen, gesellschaftliche Normen herauszufordern und sich intensiv mit
+              soziopolitischen Themen auseinanderzusetzen. Durch eindrucksvolle Performances und mutige theatrale Umgebungen schafft sie
+              Räume, die zum Nachdenken anregen, Emotionen wecken und Grenzen – innerhalb und außerhalb des Theaters – verschieben.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

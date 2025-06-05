@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Monique Smith-McDowell | Choreographer & Artist</title>
+  </head>
+  <body>
+    <div class="custom-cursor"></div>
+    <div
+      id="sparkle-container"
+      style="pointer-events: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9998"></div>
+    <div
+      id="static-sparkle-field"
+      style="pointer-events: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 9997"></div>
+    <canvas id="interactive-bg"></canvas>
+
+    <div class="language-toggle">
+      <button onclick="toggleLanguage('en')" class="active" id="enBtn">EN</button>
+      <button onclick="toggleLanguage('de')" id="deBtn">DE</button>
+    </div>
+
+    <div class="landing-container">
+      <main class="main-content">
+        <h1 class="name">Monique Smith-McDowell</h1>
+        <p class="subtitle" data-en></p>
+        <p class="subtitle" data-de style="display: none"></p>
+
+        <nav class="nav-links">
+          <a href="index.html" class="current" data-en>Home</a>
+          <a href="index.html" class="current" data-de>Start</a>
+          <a href="bio.html" data-en>Bio</a>
+          <a href="work.html" data-en>Work</a>
+          <a href="pilates.html" data-en>Pilates</a>
+          <a href="contact.html" data-en>Contact</a>
+          <a href="bio.html" data-de>Bio</a>
+          <a href="work.html" data-de>Arbeiten</a>
+          <a href="pilates.html" data-de>Pilates</a>
+          <a href="contact.html" data-de>Kontakt</a>
+        </nav>
+      </main>
+      <footer class="site-footer">
+        <div class="footer" data-en>© 2025 Monique Smith-McDowell. Website built by Seung Hwan Lee.</div>
+        <div class="footer" data-de>© 2025 Monique Smith-McDowell. Webseite erstellt von Seung Hwan Lee.</div>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

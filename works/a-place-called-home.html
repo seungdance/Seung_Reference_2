@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>A Place Called Home – Monique Smith-McDowell</title>
+    <style>
+      .work-container {
+        padding: 8rem 2rem 4rem;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      .work-header {
+        margin-bottom: 4rem;
+        text-align: center;
+      }
+
+      .work-title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .work-year {
+        font-size: 1.2rem;
+        color: #666;
+      }
+
+      .work-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 3rem;
+      }
+
+      .work-description p {
+        margin-bottom: 1.5rem;
+      }
+
+      .work-credits {
+        background: #f9f9f9;
+        padding: 2rem;
+        border-radius: 8px;
+      }
+
+      .work-credits h3 {
+        margin-bottom: 1.5rem;
+        color: #333;
+      }
+
+      .work-credits p {
+        margin: 0.5rem 0;
+        color: #666;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-bottom: 2rem;
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .work-container {
+          padding: 6rem 1rem 2rem;
+        }
+
+        .work-title {
+          font-size: 2.5rem;
+        }
+      }
+
+      .language-toggle {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        z-index: 1101;
+      }
+
+      .language-toggle button {
+        background: none;
+        border: none;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.3s, color 0.3s;
+      }
+
+      .language-toggle button.active {
+        opacity: 1;
+        font-weight: 500;
+        color: #ff69b4;
+      }
+
+      .language-toggle button:hover {
+        opacity: 1;
+        color: #ff1493;
+      }
+
+      @media (max-width: 768px) {
+        .language-toggle {
+          top: 1rem;
+          right: 1rem;
+        }
+      }
+
+      /* Styles for the new main layout grid - consistent with other work pages */
+      .work-layout-grid {
+        display: flex;
+        gap: 3rem;
+        align-items: flex-start;
+        margin-bottom: 3rem;
+      }
+
+      .work-layout-grid > .work-main-image-column {
+        flex: 0 1 40%;
+      }
+
+      .work-layout-grid > .work-main-image-column img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+
+      .work-layout-grid > .work-text-content {
+        flex: 1 1 60%;
+      }
+
+      /* New styles for the additional gallery */
+      .work-additional-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .work-additional-gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        aspect-ratio: 3/2;
+        transition: transform 0.3s ease;
+      }
+
+      .work-additional-gallery img:hover {
+        transform: scale(1.02);
+      }
+
+      /* Styles for full-width credits - consistent with other work pages */
+      .work-credits-fullwidth {
+        background: #f9f9f9;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 2rem 0;
+        box-sizing: border-box;
+        margin-top: 3rem;
+      }
+
+      .work-credits-content-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Responsive stacking for the main layout - consistent */
+      .work-layout-grid {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .work-layout-grid > .work-main-image-column,
+      .work-layout-grid > .work-text-content {
+        flex-basis: 100%;
+      }
+
+      @media (max-width: 768px) {
+        .work-layout-grid {
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .work-layout-grid > .work-main-image-column,
+        .work-layout-grid > .work-text-content {
+          flex-basis: 100%;
+        }
+
+        .work-additional-gallery {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="interactive-bg"></canvas>
+    <header>
+      <nav>
+        <a href="../index.html" data-en>Home</a>
+        <a href="../index.html" data-de>Start</a>
+        <a href="../bio.html" data-en>Bio</a>
+        <a href="../bio.html" data-de>Über mich</a>
+        <a href="../work.html" data-en>Work</a>
+        <a href="../work.html" data-de>Arbeiten</a>
+        <a href="../pilates.html" data-en>Pilates</a>
+        <a href="../pilates.html" data-de>Pilates</a>
+        <a href="../contact.html" data-en>Contact</a>
+        <a href="../contact.html" data-de>Kontakt</a>
+      </nav>
+    </header>
+
+    <div class="language-toggle">
+      <button onclick="toggleLanguage('en')" class="active" id="enBtn">EN</button>
+      <button onclick="toggleLanguage('de')" id="deBtn">DE</button>
+    </div>
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    <main class="work-container">
+      <a href="../work.html" class="back-link" data-en>← Back</a>
+      <a href="../work.html" class="back-link" data-de style="display: none">← Zurück</a>
+
+      <div class="work-header">
+        <h1 class="work-title">A place called Home</h1>
+        <div class="work-year">2024</div>
+      </div>
+
+      <div class="work-layout-grid">
+        <div class="work-main-image-column">
+          <img
+            src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835220/Work_img_A_Place_Called_Home_1_srbzpp.jpg"
+            alt="A place called Home - Main Performance Image" />
+        </div>
+        <div class="work-text-content">
+          <div class="work-description" data-en>
+            <p>
+              As children we are a taught a concept of Home that is the four walls where we reside with our biological families. The space
+              where our day starts and ends. Where our belongings have their individual resting spots and where we should find sanctuary. If
+              that is all true, what happens to me as I leave that geographical place.
+            </p>
+
+            <p>
+              What is home to a population of people, that have left even their childhood country? Is home then just a memory we hold on to
+              or do we then shift our perspectives and understanding of home?
+            </p>
+
+            <p>
+              In 2022, 23.8 million people with a migration background were living in Germany. For people on the run or people who have left
+              their home country, there is a common need to define a new home. What is home if it is no longer the four walls of
+              familiarity?
+            </p>
+
+            <p>
+              Maybe Home is simply the pockets of life where we find love and understanding. Where we can truly be our authentic selves.
+              Home doesn't need to be perfect, but it makes us feel like the perfect puzzle piece as we fit in.
+            </p>
+
+            <p>
+              "A place called Home" is a dance production that explores the idea of "home" and its political, social and emotional facets in
+              terms of choreography and content. In a team consisting of five performers and an audio describer, who share the experience of
+              migration, "A place called Home" combines movement, artistic audio description and music together intertwined with the
+              biographies of the performers, to dances deeply into the emotional, multifaceted and physical experiences of home.
+            </p>
+          </div>
+          <div class="work-description" data-de style="display: none">
+            <p>
+              Meistens lernen wir schon in unserer Kindheit ein bestimmtes Konzept von Zuhause kennen, dass vier Wände umfasst, in denen wir
+              mit unserer Familie leben. Ein Ort, an dem unser Tag beginnt und endet. Ein Ort, an dem unser Hab und Gut einen Platz hat und
+              an dem wir Geborgenheit finden können. Doch was passiert, wenn man diesen geografisch definierten Ort verlässt?
+            </p>
+            <p>
+              Ist für Menschen, die das Land ihrer Kindheit verlassen haben, das Gefühl von Heimat dann nur noch eine Erinnerung, an der sie
+              festhalten?
+            </p>
+            <p>
+              Im Jahr 2022 lebten 23,8 Millionen Menschen mit Migrationshintergrund in Deutschland. Für sie gibt es ein gemeinsames
+              Bedürfnis, eine neue Heimat zu definieren. Was ist Heimat, wenn es nicht mehr die vier Wände der Vertrautheit sind? Ist Heimat
+              vielleicht einfach ein Ort an dem wir Liebe und Verständnis finden, wo wir wirklich wir selbst sein können? Ein Zuhause muss
+              nicht perfekt sein, aber wenn es passt, gibt es uns das Gefühl, das perfekte Puzzleteil zu sein.
+            </p>
+            <p>
+              A PLACE CALLED HOME ist eine Tanzproduktion der in Hamburg lebenden Choreografin Monique Smith-McDowell, die sich künstlerisch
+              mit dem Begriff "Heimat" und dessen politischen, sozialen und emotionalen Facetten auseinandersetzt. Das Team mit vier
+              Performer*innen und eine*r Audiobeschreiber*in, die miteinander die Erfahrung der Migration teilen, setzt sich in A PLACE
+              CALLED HOME mit den eigenen, migrantischen Perspektiven auseinander. In den künstlerischen Prozess, der Musik, künstlerische
+              Audiodeskription und Choreografie miteinander verbindet, fließen diese Erfahrungen und das persönliche Wissensarchiv der
+              Performer*innen mit ein. Auf diese Weise taucht A PLACE CALLED HOME tänzerisch und narrativ tief in die emotionalen,
+              körperlichen und facettenreichen Welten dieses Teams ein.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-additional-gallery">
+        <img
+          src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835237/Work_img_A_Place_Called_Home_2_ohxkzy.jpg"
+          alt="A place called Home - Performance Image 2" />
+        <img
+          src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835251/Work_img_A_Place_Called_Home_4_kayzrh.jpg"
+          alt="A place called Home - Performance Image 3" />
+        <img
+          src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835274/Work_img_A_Place_Called_Home_9_qzcaj9.jpg"
+          alt="A place called Home - Performance Image 4" />
+      </div>
+
+      <div class="work-credits-fullwidth" data-en>
+        <div class="work-credits-content-wrapper">
+          <div class="work-credits">
+            <h3>Credits</h3>
+            <p>Concept, Choreography & performance: Monique Smith-McDowell</p>
+            <p>Co-Choreography & performance: Alessia Vinotto, Anam (Lukas) Lubisia, Isidora Soto Frias, Virendra Nishad</p>
+            <p>Artistic Audio description: Zwoisy Mears-Clarke</p>
+            <p>Audio description Dramaturgy: Fia/ Sophia Neises und Nicole Meyer</p>
+            <p>Audio descriptions advisory: Elyas Ahmadi und Jasmin Kahramen</p>
+            <p>Music: Mona Reichling</p>
+            <p>Light design: Joshua Paul</p>
+            <p>Costume: Mareike Alexander</p>
+            <p>Stage design: Leonard Schulz</p>
+            <p>Dramaturgy: Barbara Schmidt-Rohr und Su Jin Kim</p>
+            <p>Social Media: Kenneth Komlan Soussoukpo</p>
+            <p>Production management Sina Rundel und Uta Engel (LEAD Productions)</p>
+            <p>Production assistance: Leticia Rametsi</p>
+            <p>German Translation: Florence Freitag</p>
+            <p>Co-production with Kampnagel, Hamburg.</p>
+            <p>
+              Funded by the Ministry of Culture and Media of the Free and Hanseatic City of Hamburg and the Hamburgische Kulturstiftung.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-credits-fullwidth" data-de style="display: none">
+        <div class="work-credits-content-wrapper">
+          <div class="work-credits">
+            <h3>Credits</h3>
+            <p>Konzept, Choreografie & Tanz: Monique Smith-McDowell</p>
+            <p>Tanz & Co-Choreografie: Alessia Vinotto, Anam (Lukas) Lubisia, Isidora Soto Frias, Virendra Nishad</p>
+            <p>Künstlerische Audiodeskription: Zwoisy Mears-Clarke</p>
+            <p>Audiodeskription Dramaturgie: Fia/ Sophia Neises und Nicole Meyer</p>
+            <p>Audiodeskriptionsberatung: Elyas Ahmadi und Jasmin Kahramen</p>
+            <p>Musik: Mona Reichling</p>
+            <p>Lichtdesign: Joshua Paul</p>
+            <p>Kostüm: Mareike Alexander</p>
+            <p>Bühnenbild: Leonard Schulz</p>
+            <p>Dramaturgie: Barbara Schmidt-Rohr und Su Jin Kim</p>
+            <p>Social Media: Kenneth Komlan Soussoukpo</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

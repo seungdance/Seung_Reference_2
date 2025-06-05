@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>FRENZY – Monique Smith-McDowell</title>
+    <style>
+      .work-container {
+        padding: 8rem 2rem 4rem;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      .work-header {
+        margin-bottom: 4rem;
+        text-align: center;
+      }
+
+      .work-title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .work-year {
+        font-size: 1.2rem;
+        color: #666;
+      }
+
+      .work-image {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: #f5f5f5;
+        border-radius: 8px;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .work-image::before {
+        content: "Image Placeholder";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: #999;
+        font-size: 1.2rem;
+      }
+
+      .work-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .work-gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        aspect-ratio: 3/2;
+        transition: transform 0.3s ease;
+      }
+
+      .work-gallery img:hover {
+        transform: scale(1.02);
+      }
+
+      .work-gallery .full-width {
+        grid-column: 1 / -1;
+        aspect-ratio: 16/9;
+      }
+
+      .work-gallery img.show-whole {
+        object-fit: contain;
+        background: #f5f5f5;
+      }
+
+      .work-gallery.two-grid .main-img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        object-position: 50% 30%;
+        border-radius: 8px;
+        background: none;
+        display: block;
+      }
+
+      .work-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 3rem;
+      }
+
+      .work-description p {
+        margin-bottom: 1.5rem;
+      }
+
+      .work-credits {
+        background: #f9f9f9;
+        padding: 2rem;
+        border-radius: 8px;
+      }
+
+      .work-credits h3 {
+        margin-bottom: 1.5rem;
+        color: #333;
+      }
+
+      .work-credits p {
+        margin: 0.5rem 0;
+        color: #666;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-bottom: 2rem;
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .work-container {
+          padding: 6rem 1rem 2rem;
+        }
+
+        .work-title {
+          font-size: 2.5rem;
+        }
+
+        .work-gallery {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+      }
+
+      .language-toggle {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        z-index: 1101;
+      }
+
+      .language-toggle button {
+        background: none;
+        border: none;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.3s, color 0.3s;
+      }
+
+      .language-toggle button.active {
+        opacity: 1;
+        font-weight: 500;
+        color: #ff69b4;
+      }
+
+      .language-toggle button:hover {
+        opacity: 1;
+        color: #ff1493;
+      }
+
+      @media (max-width: 768px) {
+        .language-toggle {
+          top: 1rem;
+          right: 1rem;
+        }
+      }
+
+      /* Styles for the new main layout grid */
+      .work-layout-grid {
+        display: flex;
+        gap: 3rem; /* Space between gallery and text */
+        align-items: flex-start;
+        margin-bottom: 3rem; /* Space below the layout grid */
+      }
+
+      .work-layout-grid > .work-gallery-column {
+        flex: 0 1 55%; /* Gallery column: no grow, can shrink, 55% basis */
+        /* The existing .work-gallery styles will apply within this column */
+      }
+
+      .work-layout-grid > .work-text-content {
+        flex: 1 1 45%; /* Text column: can grow and shrink, 45% basis */
+      }
+
+      /* Styles for full-width credits - same as residuals.html */
+      .work-credits-fullwidth {
+        background: #f9f9f9;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 2rem 0;
+        box-sizing: border-box;
+        margin-top: 3rem; /* Space above full-width credits */
+      }
+
+      .work-credits-content-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Responsive stacking for the main layout */
+      .work-layout-grid {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .work-layout-grid > .work-gallery-column,
+      .work-layout-grid > .work-text-content {
+        flex-basis: 100%; /* Full width when stacked */
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="interactive-bg"></canvas>
+    <header>
+      <nav>
+        <a href="../index.html" data-en>Home</a>
+        <a href="../index.html" data-de>Start</a>
+        <a href="../bio.html" data-en>Bio</a>
+        <a href="../bio.html" data-de>Über mich</a>
+        <a href="../work.html" data-en>Work</a>
+        <a href="../work.html" data-de>Arbeiten</a>
+        <a href="../pilates.html" data-en>Pilates</a>
+        <a href="../pilates.html" data-de>Pilates</a>
+        <a href="../contact.html" data-en>Contact</a>
+        <a href="../contact.html" data-de>Kontakt</a>
+      </nav>
+    </header>
+
+    <div class="language-toggle">
+      <button onclick="toggleLanguage('en')" class="active" id="enBtn">EN</button>
+      <button onclick="toggleLanguage('de')" id="deBtn">DE</button>
+    </div>
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    <main class="work-container">
+      <a href="../work.html" class="back-link" data-en>← Back</a>
+      <a href="../work.html" class="back-link" data-de style="display: none">← Zurück</a>
+
+      <div class="work-header">
+        <h1 class="work-title">FRENZY</h1>
+        <div class="work-year">2021</div>
+      </div>
+
+      <div class="work-layout-grid">
+        <div class="work-gallery-column">
+          <div class="work-gallery two-grid">
+            <img
+              src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747836982/COMPRESSED_Work_img_Frenzy_ti5egh.jpg"
+              alt="FRENZY - Performance Image 1"
+              class="show-whole main-img" />
+            <img
+              src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835327/Work_img_Franzy_2_shx4op.jpg"
+              alt="FRENZY - Performance Image 2"
+              class="side-img" />
+          </div>
+        </div>
+        <div class="work-text-content">
+          <div class="work-description" data-en>
+            <p>
+              Frenzy is a choreographic work by Uta Engel and Sticky Trace Company artists Monique Smith-McDowell and Sina Rundel, created
+              for the first-year students of the Contemporary Dance School Hamburg.
+            </p>
+
+            <p>
+              FRENZY explores the emotional state of frenzy—whether individual or collective—from both a physical and conceptual
+              perspective.
+            </p>
+          </div>
+
+          <div class="work-description" data-de style="display: none">
+            <p>
+              FRENZY ist eine choreografische Arbeit von Uta Engel und den Sticky Trace Company Künstlerinnen Monique Smith-McDowell und
+              Sina Rundel für das 1. Ausbildungsjahr der Contemporary Dance School Hamburg.
+            </p>
+            <p>
+              FRENZY erforscht den emotionalen individuellen oder kollektiven Rauschzustand aus physischer und konzeptioneller Perspektive.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-credits-fullwidth" data-en>
+        <div class="work-credits-content-wrapper">
+          <div class="work-credits">
+            <h3>Credits</h3>
+            <p>Artistic Direction: Uta Engel</p>
+            <p>Concept & Choreography: Monique Smith-McDowell, Sina Rundel, and Uta Engel</p>
+            <p>Performers: Students of the Contemporary Dance School Hamburg</p>
+            <p>Music: Johann Sundermeier</p>
+            <p>Funded by: Feldtmann Kulturell, Claussen Simon Stiftung</p>
+            <p>Performances: LICHTHOF Theater Hamburg (May 2021)</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-credits-fullwidth" data-de style="display: none">
+        <div class="work-credits-content-wrapper">
+          <div class="work-credits">
+            <h3>Credits</h3>
+            <p>Künstlerische Leitung: Uta Engel</p>
+            <p>Konzept & Choreographie: Monique Smith-McDowell, Sina Rundel und Uta Engel</p>
+            <p>Performer:innen: Studierende der Contemporary Dance School Hamburg</p>
+            <p>Musik: Johann Sundermeier</p>
+            <p>Gefördert durch: Feldtmann Kulturell, Claussen Simon Stiftung</p>
+            <p>Vorstellungen: LICHTHOF Theater Hamburg (Mai 2021)</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

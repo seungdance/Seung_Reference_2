@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../style.css" />
+    <title>In the Black – Monique Smith-McDowell</title>
+    <style>
+      .work-container {
+        padding: 8rem 2rem 4rem;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      .work-header {
+        margin-bottom: 4rem;
+        text-align: center;
+      }
+
+      .work-title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .work-year {
+        font-size: 1.2rem;
+        color: #666;
+      }
+
+      .work-description {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 3rem;
+      }
+
+      .work-description p {
+        margin-bottom: 1.5rem;
+      }
+
+      .work-credits {
+        background: #f9f9f9;
+        padding: 2rem;
+        border-radius: 8px;
+      }
+
+      .work-credits h3 {
+        margin-bottom: 1.5rem;
+        color: #333;
+      }
+
+      .work-credits p {
+        margin: 0.5rem 0;
+        color: #666;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-bottom: 2rem;
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 768px) {
+        .work-container {
+          padding: 6rem 1rem 2rem;
+        }
+
+        .work-title {
+          font-size: 2.5rem;
+        }
+      }
+
+      .language-toggle {
+        position: fixed;
+        top: 2rem;
+        right: 2rem;
+        z-index: 1101;
+      }
+
+      .language-toggle button {
+        background: none;
+        border: none;
+        font-family: "Inter", sans-serif;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.3s, color 0.3s;
+      }
+
+      .language-toggle button.active {
+        opacity: 1;
+        font-weight: 500;
+        color: #ff69b4;
+      }
+
+      .language-toggle button:hover {
+        opacity: 1;
+        color: #ff1493;
+      }
+
+      @media (max-width: 768px) {
+        .language-toggle {
+          top: 1rem;
+          right: 1rem;
+        }
+      }
+
+      /* Styles for the new main layout grid - consistent with other work pages */
+      .work-layout-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: flex-start;
+        margin-bottom: 3rem;
+      }
+
+      .work-layout-grid > .work-main-image-column {
+        width: 100%;
+      }
+
+      .work-layout-grid > .work-main-image-column img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+
+      .work-layout-grid > .work-text-content {
+        width: 100%;
+      }
+
+      /* New styles for the additional gallery - consistent */
+      .work-additional-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .work-additional-gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        aspect-ratio: 3/2;
+        transition: transform 0.3s ease;
+      }
+
+      /* Specific styling for the last image */
+      .work-additional-gallery img[src*="Work_img_In_the_Black_6_the_Schmidt-23_attbn9.webp"] {
+        transform: scale(1.5);
+        object-position: center;
+      }
+
+      .additional-image-item {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+        overflow: hidden;
+        aspect-ratio: 3/2;
+        transition: transform 0.3s ease;
+      }
+
+      .additional-image-item:hover {
+        transform: scale(1.02);
+      }
+
+      /* Styles for full-width credits - consistent with other work pages */
+      .work-credits-fullwidth {
+        background: #f8f7f7;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 2rem 0;
+        box-sizing: border-box;
+        margin-top: 3rem;
+      }
+
+      .work-credits-content-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      @media (max-width: 768px) {
+        /* Responsive stacking for the main layout - consistent */
+        .work-layout-grid > .work-main-image-column,
+        .work-layout-grid > .work-text-content {
+          flex-basis: 100%;
+        }
+
+        .work-additional-gallery {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="interactive-bg"></canvas>
+    <header>
+      <nav>
+        <a href="../index.html" data-en>Home</a>
+        <a href="../index.html" data-de>Start</a>
+        <a href="../bio.html" data-en>Bio</a>
+        <a href="../bio.html" data-de>Über mich</a>
+        <a href="../work.html" data-en>Work</a>
+        <a href="../work.html" data-de>Arbeiten</a>
+        <a href="../pilates.html" data-en>Pilates</a>
+        <a href="../pilates.html" data-de>Pilates</a>
+        <a href="../contact.html" data-en>Contact</a>
+        <a href="../contact.html" data-de>Kontakt</a>
+      </nav>
+    </header>
+
+    <div class="language-toggle">
+      <button onclick="toggleLanguage('en')" class="active" id="enBtn">EN</button>
+      <button onclick="toggleLanguage('de')" id="deBtn">DE</button>
+    </div>
+
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+
+    <main class="work-container">
+      <a href="../work.html" class="back-link" data-en>← Back</a>
+      <a href="../work.html" class="back-link" data-de style="display: none">← Zurück</a>
+
+      <div class="work-header">
+        <h1 class="work-title">In the Black</h1>
+        <div class="work-year">2023</div>
+      </div>
+
+      <div class="work-layout-grid">
+        <div class="work-main-image-column">
+          <img
+            src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835325/Work_img_In_the_Black_8_the_Schmidt-23_d78wzh.jpg"
+            alt="In the Black - Main Performance Image (Formerly Image 5)" />
+        </div>
+        <div class="work-text-content">
+          <div class="work-description" data-en>
+            <p>
+              "Black means beautiful, Black means bold, Black means Courageous. It means a past rooted in survival and the dreams and hopes
+              of those who came before me. Being black means at times being disregarded, belittled, hidden. Hidden in the Black, in the
+              Black of my skin, in the Black of the space around me and in the Black of time. There is how I see myself and how society sees
+              me. The two do not always align but I learnt to scream louder "in the Black" for the part of me that is misunderstood and sits
+              anchored in the beauty of my black skin, my culture and my heritage."
+            </p>
+
+            <p>
+              Inspired by the experiences of choreographer Monique Smith-McDowell, "In the Black" is the account of a journey through life
+              marked by negative connotations linked to skin colour. And the constant evolution of the need to justify, transform and shape
+              one's place in society. At the same time, it is a search for inner beauty, a desire to rise above negativity. The voices on
+              the outside are silenced and the community on the inside is listened to. We remember who we are and what we represent.
+            </p>
+
+            <p>
+              An animalistic body with a contemporary flair moves through space, depicting emotions felt by members of the black community
+              as they grow and develop into adults. A journey through different stages of life - the Majestic Being, the Beast and the
+              Butterfly - combines music, poetic audio description and choreography into a rollercoaster of emotions.
+            </p>
+          </div>
+          <div class="work-description" data-de style="display: none">
+            <p>
+              “Black means beautiful, Black means bold, Black means courageous. Being black means a past rooted in survival and the dreams
+              and hopes of those who came before me. Being black means at times being disregarded, belittled, hidden. Hidden in the Black,
+              in the Black of my skin, in the Black of the space around me und in the Black of time. There is a difference in how I see
+              myself and how society sees me. The two seldom align but I learnt to scream louder IN THE BLACK, for the part of me that is
+              misunderstood and sits anchored in the beauty of my Black skin, my culture and my heritage.” Inspiriert von den
+              Lebenserfahrungen der Choreographin Monique SmithMcDowell, ist In the Black die Geschichte eines Lebens, das mit den negativen
+              Konnotationen der Hautfarbe konfrontiert ist. Es spiegelt die konstante Entwicklung des Bedürfnisses wider, den eigenen Platz
+              in der Gesellschaft zu rechtfertigen, zu transformieren und zu gestalten. Gleichzeitig ist es eine Suche nach innerer
+              Schönheit und den Wunsch, sich zu erheben. Stimmen von außen werden zum Schweigen gebracht, die Community im Inneren wird
+              angehört. Wir erinnern uns, wer wir sind und was wir repräsentieren. Ein animalischer Körper mit zeitgenössischem Flair bewegt
+              sich durch den Raum und stellt die Emotionen dar, die Mitglieder der Schwarzen Community während und in der Entwicklung ihres
+              Heranwachsens teilen. Eine Reise durch verschiedene Lebensabschnitte schafft eine emotionale Achterbahnfahrt, die durch Musik,
+              poetische Audiodeskription und Choreographie spürbar wird.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-additional-gallery">
+        <div class="additional-image-item">
+          <img
+            src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835291/Work_img_In_the_Black_1_the_Schmidt-23_rf8e7t.jpg"
+            alt="In the Black - Performance Image 1 (Formerly Main Image)" />
+        </div>
+        <div class="additional-image-item">
+          <img
+            src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835296/Work_img_In_the_Black_2_the_Schmidt-23_y31vxj.jpg"
+            alt="In the Black - Performance Image 2" />
+        </div>
+
+        <div class="additional-image-item">
+          <img
+            src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835292/Work_img_In_the_Black_6_the_Schmidt-23_attbn9.webp"
+            alt="In the Black - Performance Image 4" />
+        </div>
+      </div>
+
+      <div class="work-credits-fullwidth" data-en>
+        <div class="work-credits-content-wrapper">
+          <div class="work-credits">
+            <h3>Credits</h3>
+            <p>Choreography & Concept: Monique Smith-McDowell</p>
+            <p>Performers: Marleen Hendrickx, Danielle Huyghe</p>
+            <p>Artistic Collaboration: Alessio Schreurs</p>
+            <p>Music: Johann Sundermeier</p>
+            <p>Light Design & Technical Direction: Edwin van Steenbergen</p>
+            <p>Co-production: DansBrabant & Podium Bloos</p>
+            <p>With the support of: PLAN Talentontwikkeling Brabant & De Nieuwe Vorst</p>
+            <p>Photos: ©THE SCHMIDT</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-credits-fullwidth" data-de style="display: none">
+        <div class="work-credits-content-wrapper">
+          <div class="work-credits">
+            <h3>Credits</h3>
+            <p>Choreographie & Konzept: Monique Smith-McDowell</p>
+            <p>Performer: Marleen Hendrickx, Danielle Huyghe</p>
+            <p>Künstlerische Zusammenarbeit: Alessio Schreurs</p>
+            <p>Musik: Johann Sundermeier</p>
+            <p>Lichtdesign & Technische Leitung: Edwin van Steenbergen</p>
+            <p>Koproduktion: DansBrabant & Podium Bloos</p>
+            <p>Mit Unterstützung von: PLAN Talentontwikkeling Brabant & De Nieuwe Vorst</p>
+            <p>Fotos: ©THE SCHMIDT</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

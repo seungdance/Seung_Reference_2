@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pilates – Monique Smith-McDowell</title>
+  </head>
+  <body>
+    <div class="custom-cursor"></div>
+    <canvas id="interactive-bg"></canvas>
+    <canvas
+      id="bg-canvas"
+      style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; display: block"></canvas>
+    <header>
+      <nav>
+        <a href="index.html" data-en>Home</a>
+        <a href="index.html" data-de>Start</a>
+        <a href="bio.html" data-en>Bio</a>
+        <a href="bio.html" data-de>Über mich</a>
+        <a href="work.html" data-en>Work</a>
+        <a href="work.html" data-de>Arbeiten</a>
+        <a href="pilates.html" data-en>Pilates</a>
+        <a href="pilates.html" data-de>Pilates</a>
+        <a href="contact.html" data-en>Contact</a>
+        <a href="contact.html" data-de>Kontakt</a>
+      </nav>
+    </header>
+
+    <div class="language-toggle">
+      <button onclick="toggleLanguage('en')" class="active" id="enBtn">EN</button>
+      <button onclick="toggleLanguage('de')" id="deBtn">DE</button>
+    </div>
+
+    <main class="main-card">
+      <h1 class="page-title" data-en></h1>
+      <h1 class="page-title" data-de></h1>
+      <div class="pilates-video-hero">
+        <video
+          width="100%"
+          height="100%"
+          controls
+          autoplay
+          muted
+          playsinline
+          poster="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835211/Monique_8_aooyli.jpg"
+          style="object-fit: cover; object-position: center; width: 100%; height: 100%; border-radius: 1.5rem; transform: scale(1.02)">
+          <source src="https://res.cloudinary.com/dwlzn6c4l/video/upload/v1747835398/Pilates_Video_1_apiseb.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="pilates-content">
+        <div class="pilates-text">
+          <div data-en>
+            <h2>Discover Your Strength – Inside and Out</h2>
+            <p>
+              Finding healthier practices of movement is something I strive for.
+              <br />
+              As a certified BASI® Pilates Trainer, I am passionate about helping you connect with your body, build strength, and feel truly
+              empowered in your own skin.
+              <br />
+              My classes are more than just a workout—they're a space to discover, grow, and celebrate what your body can do. Whether you're
+              new to Pilates or deepening your practice, I bring energy, encouragement, and a touch of fun to every session. Expect a
+              dynamic, supportive environment where we work hard, laugh often, and explore movement with curiosity and confidence.
+              <br />
+              With a strong foundation in BASI's comprehensive training method, I'm here to guide you through intelligent movement that not
+              only enhances physical strength, posture, and flexibility—but also supports mental clarity and self-awareness.
+              <br />
+              I offer both group classes, duo classes and personal training sessions, tailored to meet you where you are in your movement
+              journey.
+              <br />
+              Have a question or want to join a class? Feel free to get in touch—I'd love to hear from you!
+              <br />
+              Let's move with purpose, discover your power, and feel amazing—one session at a time.
+            </p>
+          </div>
+          <div data-de>
+            <h2>Entdecke deine Stärke – von innen und außen</h2>
+            <p>
+              Gesündere Bewegungspraktiken zu finden, ist etwas, das mir sehr am Herzen liegt.
+              <br />
+              Als zertifizierte BASI® Pilates-Trainerin ist es meine Leidenschaft, dir zu helfen, eine tiefere Verbindung zu deinem Körper
+              aufzubauen, Kraft zu entwickeln und dich in deiner Haut wirklich gestärkt und wohl zu fühlen.
+              <br />
+              Meine Kurse sind mehr als nur ein Workout – sie sind ein Raum, in dem du entdecken, wachsen und feiern kannst, was dein Körper
+              alles leisten kann. Egal, ob du neu im Pilates bist oder deine Praxis vertiefen möchtest – ich bringe Energie, Motivation und
+              eine Portion Spaß in jede Einheit. Dich erwartet ein dynamisches, unterstützendes Umfeld, in dem wir gemeinsam schwitzen,
+              lachen und mit Neugier und Selbstvertrauen in Bewegung eintauchen.
+              <br />
+              Mit einem soliden Fundament in der umfassenden BASI®-Methode begleite ich dich durch ein intelligentes Training, das nicht nur
+              deine körperliche Kraft, Haltung und Flexibilität verbessert, sondern auch mentale Klarheit und Selbstwahrnehmung fördert.
+              <br />
+              Ich biete sowohl Gruppenkurse Duo-training als auch Personal Training an – individuell abgestimmt auf deine persönlichen
+              Bedürfnisse und Ziele.
+              <br />
+              Du hast Fragen oder möchtest mitmachen? Melde dich gerne direkt bei mir – ich freue mich auf deine Nachricht!
+              <br />
+              Lass uns gemeinsam mit Freude und Ziel bewegen, deine Kraft entdecken – und dich nach jeder Session rundum gut fühlen.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="pilates-images">
+        <img
+          src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835211/Monique_8_aooyli.jpg"
+          alt="Monique Smith-McDowell Pilates"
+          class="pilates-image" />
+        <img
+          src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835187/Monique_2_ktcntk.jpg"
+          alt="Monique Smith-McDowell Pilates"
+          class="pilates-image" />
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
