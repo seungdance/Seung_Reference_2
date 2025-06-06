@@ -149,10 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
     animate();
-    window.addEventListener("resize", () => {
-      progress = 0;
-      animate();
-    });
+    window.addEventListener("resize", resizeBGCanvas);
   }
 
   // --- Custom Cursor Logic (shared) ---
