@@ -104,7 +104,9 @@ document.addEventListener("DOMContentLoaded", function () {
       bgCanvas.height = window.innerHeight;
     }
     resizeBGCanvas();
-    window.addEventListener("resize", resizeBGCanvas);
+    // Track previous canvas width and height for smart resize redraw
+    let prevW = bgCanvas.width;
+    let prevH = bgCanvas.height;
 
     // Define 4 thick colorful lines, top right to bottom left (135 degrees)
     const colors = ["#FBE8E7", "#B2D1E8", "#B07B6D", "#FBECC5"];
@@ -149,9 +151,18 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
     animate();
+
+    // Only redraw if the canvas size changes by more than 50px (ignore small mobile scroll resizes)
     window.addEventListener("resize", () => {
-      progress = 0;
-      animate();
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      if (Math.abs(w - prevW) > 50 || Math.abs(h - prevH) > 50) {
+        resizeBGCanvas();
+        progress = maxProgress;
+        drawLines();
+        prevW = w;
+        prevH = h;
+      }
     });
   }
 
