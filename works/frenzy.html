@@ -11,6 +11,7 @@
         padding: 8rem 2rem 4rem;
         max-width: 1000px;
         margin: auto;
+        box-sizing: border-box;
       }
 
       .work-header {
@@ -93,10 +94,21 @@
         font-size: 1.1rem;
         line-height: 1.8;
         margin-bottom: 3rem;
+        color: #333;
+        letter-spacing: 0.01em;
+        text-align: justify;
+        text-justify: inter-word;
       }
 
       .work-description p {
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
+        text-align: justify;
+        text-justify: inter-word;
+        word-spacing: 0.05em;
+      }
+
+      .work-description p:last-child {
+        margin-bottom: 0;
       }
 
       .work-credits {
@@ -115,21 +127,10 @@
         color: #666;
       }
 
-      .back-link {
-        display: inline-block;
-        margin-bottom: 2rem;
-        color: #333;
-        text-decoration: none;
-        font-weight: 500;
-      }
-
-      .back-link:hover {
-        text-decoration: underline;
-      }
-
       @media (max-width: 768px) {
         .work-container {
           padding: 6rem 1rem 2rem;
+          box-sizing: border-box;
         }
 
         .work-title {
@@ -139,6 +140,60 @@
         .work-gallery {
           grid-template-columns: 1fr;
           gap: 1.5rem;
+        }
+
+        .work-credits-fullwidth {
+          margin-left: -1rem;
+          margin-right: -1rem;
+        }
+
+        .work-credits-content-wrapper {
+          padding: 0 1rem;
+        }
+
+        .work-description {
+          font-size: 1.05rem;
+          line-height: 1.7;
+          padding: 0;
+          margin-bottom: 2.5rem;
+          text-align: justify;
+          text-justify: inter-word;
+        }
+
+        .work-description p {
+          margin-bottom: 1.8rem;
+          text-align: justify;
+          text-justify: inter-word;
+          word-spacing: 0.05em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .work-container {
+          padding: 5rem 0.8rem 1.5rem;
+        }
+
+        .work-credits-fullwidth {
+          margin-left: -0.8rem;
+          margin-right: -0.8rem;
+        }
+
+        .work-credits-content-wrapper {
+          padding: 0 0.8rem;
+        }
+
+        .work-description {
+          font-size: 1rem;
+          line-height: 1.6;
+          text-align: justify;
+          text-justify: inter-word;
+        }
+
+        .work-description p {
+          margin-bottom: 1.5rem;
+          text-align: justify;
+          text-justify: inter-word;
+          word-spacing: 0.05em;
         }
       }
 
@@ -198,19 +253,20 @@
       /* Styles for full-width credits - same as residuals.html */
       .work-credits-fullwidth {
         background: #f9f9f9;
-        width: 100vw;
+        width: 100%;
         position: relative;
-        left: 50%;
-        transform: translateX(-50%);
         padding: 2rem 0;
         box-sizing: border-box;
-        margin-top: 3rem; /* Space above full-width credits */
+        margin-top: 3rem;
+        margin-left: -2rem;
+        margin-right: -2rem;
       }
 
       .work-credits-content-wrapper {
         max-width: 1000px;
         margin: 0 auto;
         padding: 0 2rem;
+        box-sizing: border-box;
       }
 
       /* Responsive stacking for the main layout */

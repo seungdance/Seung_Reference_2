@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Static sparkle field
+    // Static sparkle field (sand)
     if (staticSparkleField) {
       const staticSparkleCount = 400;
       const staticSparkles = [];
@@ -322,25 +322,59 @@ document.addEventListener("DOMContentLoaded", function () {
         grain.style.opacity = "0.8";
         grain.style.transition = "left 0.22s cubic-bezier(.4,2,.6,1), top 0.22s cubic-bezier(.4,2,.6,1)";
         staticSparkleField.appendChild(grain);
-        staticSparkles.push({ el: grain, x: x, y: y });
+        staticSparkles.push({ el: grain, x: x, y: y, vx: 0, vy: 0 });
       }
 
-      document.addEventListener("mousemove", (e) => {
-        staticSparkles.forEach((grain) => {
-          const dx = e.clientX - grain.x;
-          const dy = e.clientY - grain.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 60) {
-            // Move away from cursor and update position
-            const angle = Math.atan2(dy, dx);
-            const moveDist = 30 * (1 - dist / 60);
-            grain.x = grain.x - Math.cos(angle) * moveDist;
-            grain.y = grain.y - Math.sin(angle) * moveDist;
+      if (!isTouchDevice()) {
+        // Desktop: grains react to mouse
+        document.addEventListener("mousemove", (e) => {
+          staticSparkles.forEach((grain) => {
+            const dx = e.clientX - grain.x;
+            const dy = e.clientY - grain.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 60) {
+              // Move away from cursor and update position
+              const angle = Math.atan2(dy, dx);
+              const moveDist = 30 * (1 - dist / 60);
+              grain.x = grain.x - Math.cos(angle) * moveDist;
+              grain.y = grain.y - Math.sin(angle) * moveDist;
+              grain.el.style.left = `${grain.x}px`;
+              grain.el.style.top = `${grain.y}px`;
+            }
+          });
+        });
+      } else {
+        // Mobile: grains float and travel by themselves
+        function animateSand() {
+          staticSparkles.forEach((grain) => {
+            // Give each grain a slow, random drift
+            if (!grain.vx && !grain.vy) {
+              grain.vx = (Math.random() - 0.5) * 0.5;
+              grain.vy = (Math.random() - 0.5) * 0.5;
+            }
+            // Occasionally change direction
+            if (Math.random() < 0.01) {
+              grain.vx += (Math.random() - 0.5) * 0.2;
+              grain.vy += (Math.random() - 0.5) * 0.2;
+            }
+            // Limit speed
+            grain.vx = Math.max(-0.7, Math.min(0.7, grain.vx));
+            grain.vy = Math.max(-0.7, Math.min(0.7, grain.vy));
+            // Move
+            grain.x += grain.vx;
+            grain.y += grain.vy;
+            // Wrap around screen
+            if (grain.x < 0) grain.x = window.innerWidth;
+            if (grain.x > window.innerWidth) grain.x = 0;
+            if (grain.y < 0) grain.y = window.innerHeight;
+            if (grain.y > window.innerHeight) grain.y = 0;
             grain.el.style.left = `${grain.x}px`;
             grain.el.style.top = `${grain.y}px`;
-          }
-        });
-      });
+          });
+          requestAnimationFrame(animateSand);
+        }
+        animateSand();
+      }
     }
   }
 });
@@ -423,4 +457,54 @@ document.addEventListener("DOMContentLoaded", function () {
     requestAnimationFrame(drawTouch);
   }
   drawTouch();
+});
+
+// Mobile Navigation
+document.addEventListener("DOMContentLoaded", function () {
+  // Create hamburger menu button
+  const hamburgerBtn = document.createElement("div");
+  hamburgerBtn.className = "hamburger-menu";
+  hamburgerBtn.innerHTML = `
+    <span></span>
+    <span></span>
+    <span></span>
+  `;
+  document.body.appendChild(hamburgerBtn);
+
+  // Create mobile navigation
+  const mobileNav = document.createElement("div");
+  mobileNav.className = "mobile-nav";
+
+  // Get all navigation links from the original nav
+  const navLinks = document.querySelectorAll("nav a");
+  navLinks.forEach((link) => {
+    const mobileLink = link.cloneNode(true);
+    mobileNav.appendChild(mobileLink);
+  });
+  document.body.appendChild(mobileNav);
+
+  // Toggle mobile menu
+  hamburgerBtn.addEventListener("click", function () {
+    this.classList.toggle("active");
+    mobileNav.classList.toggle("active");
+    document.body.style.overflow = mobileNav.classList.contains("active") ? "hidden" : "";
+  });
+
+  // Close mobile menu when clicking a link
+  mobileNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburgerBtn.classList.remove("active");
+      mobileNav.classList.remove("active");
+      document.body.style.overflow = "";
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!hamburgerBtn.contains(e.target) && !mobileNav.contains(e.target) && mobileNav.classList.contains("active")) {
+      hamburgerBtn.classList.remove("active");
+      mobileNav.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
 });

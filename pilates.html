@@ -6,6 +6,76 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>Pilates – Monique Smith-McDowell</title>
+    <style>
+      .pilates-text {
+        flex: 2 1 400px;
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #333;
+        background: rgba(255, 255, 255, 0.7);
+        border-radius: 1.5rem;
+        padding: 2rem 2rem 1rem 2rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        text-align: justify;
+        text-justify: inter-word;
+        letter-spacing: 0.01em;
+      }
+
+      .pilates-text p {
+        margin-bottom: 2rem;
+        text-align: justify;
+        text-justify: inter-word;
+        word-spacing: 0.05em;
+      }
+
+      .pilates-text p:last-child {
+        margin-bottom: 0;
+      }
+
+      .pilates-text h2 {
+        font-size: 2rem;
+        margin-top: 0;
+        margin-bottom: 2rem;
+        color: #ff69b4;
+        font-family: "Fredoka", "Inter", sans-serif;
+        font-weight: 600;
+        text-align: left;
+      }
+
+      @media (max-width: 900px) {
+        .pilates-text {
+          font-size: 1.05rem;
+          line-height: 1.75;
+          padding: 1.5rem 1.5rem 1rem 1.5rem;
+        }
+
+        .pilates-text p {
+          margin-bottom: 1.8rem;
+        }
+
+        .pilates-text h2 {
+          font-size: 1.8rem;
+          margin-bottom: 1.8rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .pilates-text {
+          font-size: 1rem;
+          line-height: 1.7;
+          padding: 1.2rem 1.2rem 1rem 1.2rem;
+        }
+
+        .pilates-text p {
+          margin-bottom: 1.5rem;
+        }
+
+        .pilates-text h2 {
+          font-size: 1.5rem;
+          margin-bottom: 1.5rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="custom-cursor"></div>

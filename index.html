@@ -8,6 +8,24 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>Monique Smith-McDowell | Choreographer & Artist</title>
+    <style>
+      @media (max-width: 480px) {
+        .site-footer .footer {
+          font-size: 0.8rem;
+          text-align: center;
+          line-height: 1.4;
+          padding: 0 1rem;
+        }
+        .mobile-break {
+          display: block;
+        }
+      }
+      @media (min-width: 481px) {
+        .mobile-break {
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="custom-cursor"></div>
@@ -44,8 +62,16 @@
         </nav>
       </main>
       <footer class="site-footer">
-        <div class="footer" data-en>© 2025 Monique Smith-McDowell. Website built by Seung Hwan Lee.</div>
-        <div class="footer" data-de>© 2025 Monique Smith-McDowell. Webseite erstellt von Seung Hwan Lee.</div>
+        <div class="footer" data-en>
+          <span>© 2025 Monique Smith-McDowell.</span>
+          <br class="mobile-break" />
+          <span>Website built by Seung Hwan Lee.</span>
+        </div>
+        <div class="footer" data-de>
+          <span>© 2025 Monique Smith-McDowell.</span>
+          <br class="mobile-break" />
+          <span>Webseite erstellt von Seung Hwan Lee.</span>
+        </div>
       </footer>
     </div>
 
