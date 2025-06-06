@@ -104,11 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
       bgCanvas.height = window.innerHeight;
     }
     resizeBGCanvas();
-    window.addEventListener("resize", () => {
-      resizeBGCanvas();
-      progress = maxProgress;
-      drawLines();
-    });
+    window.addEventListener("resize", resizeBGCanvas);
 
     // Define 4 thick colorful lines, top right to bottom left (135 degrees)
     const colors = ["#FBE8E7", "#B2D1E8", "#B07B6D", "#FBECC5"];
@@ -153,7 +149,10 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
     animate();
-    window.addEventListener("resize", resizeBGCanvas);
+    window.addEventListener("resize", () => {
+      progress = 0;
+      animate();
+    });
   }
 
   // --- Custom Cursor Logic (shared) ---
