@@ -51,35 +51,43 @@ function draw() {
 }
 draw();
 
+// Utility: Detect touch device
+function isTouchDevice() {
+  return "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+}
+
 // Create and initialize custom cursor
-document.addEventListener("DOMContentLoaded", () => {
-  // Use existing cursor element
-  const customCursor = document.querySelector(".custom-cursor");
+// Only run on non-touch devices
+if (!isTouchDevice()) {
+  document.addEventListener("DOMContentLoaded", () => {
+    // Use existing cursor element
+    const customCursor = document.querySelector(".custom-cursor");
 
-  // Update cursor position
-  let cursorX = 0;
-  let cursorY = 0;
-  document.addEventListener("mousemove", (e) => {
-    cursorX = e.clientX;
-    cursorY = e.clientY;
-    customCursor.style.left = cursorX + "px";
-    customCursor.style.top = cursorY + "px";
-  });
-
-  // Grow on hover for interactive elements
-  const interactiveElements = document.querySelectorAll("a, button, .hover-target, input, textarea, select");
-  interactiveElements.forEach((el) => {
-    el.addEventListener("mouseenter", () => {
-      customCursor.classList.add("hovered");
+    // Update cursor position
+    let cursorX = 0;
+    let cursorY = 0;
+    document.addEventListener("mousemove", (e) => {
+      cursorX = e.clientX;
+      cursorY = e.clientY;
+      customCursor.style.left = cursorX + "px";
+      customCursor.style.top = cursorY + "px";
     });
-    el.addEventListener("mouseleave", () => {
-      customCursor.classList.remove("hovered");
-    });
-  });
 
-  const savedLang = localStorage.getItem("preferredLanguage") || "en";
-  toggleLanguage(savedLang);
-});
+    // Grow on hover for interactive elements
+    const interactiveElements = document.querySelectorAll("a, button, .hover-target, input, textarea, select");
+    interactiveElements.forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        customCursor.classList.add("hovered");
+      });
+      el.addEventListener("mouseleave", () => {
+        customCursor.classList.remove("hovered");
+      });
+    });
+
+    const savedLang = localStorage.getItem("preferredLanguage") || "en";
+    toggleLanguage(savedLang);
+  });
+}
 
 document.addEventListener("mousemove", function (e) {
   document.documentElement.style.setProperty("--mouse-x", e.clientX + "px");
@@ -98,46 +106,27 @@ document.addEventListener("DOMContentLoaded", function () {
     resizeBGCanvas();
     window.addEventListener("resize", resizeBGCanvas);
 
-    // Four truly separate diagonal lines
-    const lineDefs = [
-      {
-        color: "#fff9b2",
-        width: 140,
-        start: (w, h) => [w, 100],
-        end: (w, h) => [0, w],
-      },
-      {
-        color: "#b2f7ff",
-        width: 140,
-        start: (w, h) => [w, 0],
-        end: (w, h) => [0, h],
-      },
-      {
-        color: "#ff69b4",
-        width: 140,
-        start: (w, h) => [w, 0],
-        end: (w, h) => [0, h - 350],
-      },
-      {
-        color: "#baffc9",
-        width: 110,
-        start: (w, h) => [w, 0],
-        end: (w, h) => [0, h - 700],
-      },
-    ];
+    // Define 4 thick colorful lines, top right to bottom left (135 degrees)
+    const colors = ["#FBE8E7", "#B2D1E8", "#B07B6D", "#FBECC5"];
+    const lineWidth = 150;
+    const numLines = 4;
     let progress = 0;
-    const maxProgress = 1.1; // 1 = full diagonal, >1 for overshoot
-    const speed = 0.012;
+    const maxProgress = 1.1;
+    const speed = 0.005;
 
     function drawLines() {
       ctx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
-      lineDefs.forEach((line) => {
+      const gap = bgCanvas.width / (numLines + 0.1);
+      for (let i = 0; i < numLines; i++) {
         ctx.save();
-        ctx.strokeStyle = line.color;
-        ctx.lineWidth = line.width;
+        ctx.strokeStyle = colors[i % colors.length];
+        ctx.lineWidth = lineWidth;
         ctx.lineCap = "round";
-        const [x0, y0] = line.start(bgCanvas.width, bgCanvas.height);
-        const [x1, y1] = line.end(bgCanvas.width, bgCanvas.height);
+        // Start at top right, offset by gap
+        const x0 = bgCanvas.width - i * gap;
+        const y0 = -lineWidth * 0.7;
+        const x1 = x0 - bgCanvas.height;
+        const y1 = bgCanvas.height + lineWidth * 0.7;
         const dx = x1 - x0;
         const dy = y1 - y0;
         ctx.beginPath();
@@ -145,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
         ctx.lineTo(x0 + dx * progress, y0 + dy * progress);
         ctx.stroke();
         ctx.restore();
-      });
+      }
     }
 
     function animate() {
@@ -160,6 +149,10 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
     animate();
+    window.addEventListener("resize", () => {
+      progress = 0;
+      animate();
+    });
   }
 
   // --- Custom Cursor Logic (shared) ---
@@ -350,4 +343,84 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   }
+});
+
+// --- LANDING PAGE: Mouse & Touch Canvas Interaction ---
+document.addEventListener("DOMContentLoaded", function () {
+  const canvas = document.getElementById("interactive-bg");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  // Desktop: mousemove effect (existing code)
+  if (!isTouchDevice()) {
+    let mouseX = 0;
+    let mouseY = 0;
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const radius = 80;
+      const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, radius);
+      gradient.addColorStop(0, "rgba(255, 200, 200, 0.5)");
+      gradient.addColorStop(1, "rgba(255, 200, 200, 0)");
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(mouseX, mouseY, radius, 0, Math.PI * 2);
+      ctx.fill();
+      requestAnimationFrame(draw);
+    }
+    draw();
+    return;
+  }
+
+  // Mobile: touch interaction (simulate cursor effect)
+  let isDrawing = false;
+  let touchX = 0;
+  let touchY = 0;
+  function getTouchPos(e) {
+    const touch = e.touches[0] || e.changedTouches[0];
+    return { x: touch.clientX, y: touch.clientY };
+  }
+  canvas.addEventListener("touchstart", (e) => {
+    isDrawing = true;
+    const pos = getTouchPos(e);
+    touchX = pos.x;
+    touchY = pos.y;
+    e.preventDefault();
+  });
+  canvas.addEventListener("touchmove", (e) => {
+    if (!isDrawing) return;
+    const pos = getTouchPos(e);
+    touchX = pos.x;
+    touchY = pos.y;
+    e.preventDefault();
+  });
+  canvas.addEventListener("touchend", (e) => {
+    isDrawing = false;
+    e.preventDefault();
+  });
+  function drawTouch() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (isDrawing) {
+      const radius = 80;
+      const gradient = ctx.createRadialGradient(touchX, touchY, 0, touchX, touchY, radius);
+      gradient.addColorStop(0, "rgba(255, 200, 200, 0.5)");
+      gradient.addColorStop(1, "rgba(255, 200, 200, 0)");
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.arc(touchX, touchY, radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    requestAnimationFrame(drawTouch);
+  }
+  drawTouch();
 });
