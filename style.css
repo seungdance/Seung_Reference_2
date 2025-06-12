@@ -5,7 +5,7 @@ body {
   min-height: 100vh;
   background: #fff;
   color: #333;
-  font-family: "Inter", sans-serif;
+  font-family: "Jost", sans-serif !important;
   overflow-x: hidden;
   cursor: none;
 }
@@ -33,7 +33,7 @@ body {
 }
 
 .name {
-  font-family: "Fredoka", sans-serif;
+  font-family: "Libre Baskerville", serif;
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 600;
   margin: 0;
@@ -95,13 +95,13 @@ body {
   position: fixed;
   top: 2rem;
   right: 2rem;
-  z-index: 100;
+  z-index: 10000;
 }
 
 .language-toggle button {
   background: none;
   border: none;
-  font-family: "Inter", sans-serif;
+  font-family: "Jost", sans-serif;
   font-size: 0.9rem;
   padding: 0.5rem;
   cursor: pointer;
@@ -216,11 +216,19 @@ nav {
 }
 
 nav a {
-  text-decoration: none;
   color: #333;
+  text-decoration: none;
+  font-family: "Jost", sans-serif;
+  font-size: 1.1rem;
   font-weight: 500;
-  transition: color 0.3s ease;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 0;
+  background: none !important;
+  box-shadow: none !important;
+  transition: all 0.18s cubic-bezier(0.4, 2, 0.6, 1);
   position: relative;
+  overflow: hidden;
 }
 
 nav a::after {
@@ -234,8 +242,15 @@ nav a::after {
   transition: width 0.3s ease;
 }
 
-nav a:hover {
-  color: #ff69b4;
+nav a:hover,
+nav a:focus,
+nav a:active,
+nav a.current {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #ff1493;
+  transform: scale(1.13) rotate(-3deg);
 }
 
 nav a:hover::after {
@@ -257,6 +272,16 @@ nav a:hover::after {
 .bio-title {
   font-size: 3rem;
   margin-bottom: 1rem;
+}
+
+.mobile-break {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-break {
+    display: block;
+  }
 }
 
 .bio-content {
@@ -281,7 +306,7 @@ nav a:hover::after {
   font-size: 1.1rem;
   line-height: 1.8;
   color: #333;
-  font-family: "Inter", sans-serif;
+  font-family: "Jost", sans-serif;
 }
 
 .bio-text p {
@@ -349,13 +374,13 @@ nav a:hover::after {
   position: fixed;
   top: 2rem;
   right: 2rem;
-  z-index: 100;
+  z-index: 10000;
 }
 
 .language-toggle button {
   background: none;
   border: none;
-  font-family: "Inter", sans-serif;
+  font-family: "Jost", sans-serif;
   font-size: 0.9rem;
   padding: 0.5rem;
   cursor: pointer;
@@ -759,9 +784,11 @@ body:active::after {
 .pilates-text h2 {
   font-size: 2rem;
   margin-top: 0;
-  color: #ff69b4;
-  font-family: "Fredoka", "Inter", sans-serif;
+  margin-bottom: 2rem;
+  color: #333;
+  font-family: "Jost", sans-serif;
   font-weight: 600;
+  text-align: left;
 }
 
 @media (max-width: 900px) {
@@ -1218,6 +1245,7 @@ body {
 }
 
 .mobile-nav a {
+  font-family: "Jost", sans-serif;
   font-size: 1.5rem;
   color: #333;
   text-decoration: none;
@@ -1241,5 +1269,139 @@ body {
   .language-toggle {
     right: 2rem;
     top: 1.5rem;
+  }
+}
+
+.spring-line1 {
+  top: 8vh;
+  background: #ffe99a;
+  animation-delay: 0s;
+}
+.spring-line2 {
+  top: 30vh;
+  background: #ffd586;
+  animation-delay: 2s;
+}
+.spring-line3 {
+  top: 55vh;
+  background: #ffaaaa;
+  animation-delay: 4s;
+}
+.spring-line4 {
+  top: 75vh;
+  background: #ff9898;
+  animation-delay: 6s;
+}
+
+/* Text-based contact information for laptop/desktop */
+.contact-text-info {
+  display: none;
+  margin: 2rem 0;
+}
+
+.contact-welcome-text {
+  margin-bottom: 2.5rem;
+}
+
+.contact-welcome-text p {
+  font-family: "Jost", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333;
+  font-weight: 400;
+  max-width: 600px;
+  opacity: 0.9;
+}
+
+.contact-text-item {
+  margin: 1rem 0;
+  font-family: "Jost", sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.contact-label {
+  font-weight: 500;
+  color: #333;
+  margin-right: 0.5rem;
+}
+
+.contact-link {
+  color: #ff69b4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #ff1493;
+  text-decoration: underline;
+}
+
+/* Show text contact info on laptop/desktop, hide icons */
+@media (min-width: 769px) {
+  .contact-text-info {
+    display: block;
+  }
+
+  .contact-icons {
+    display: none;
+  }
+}
+
+/* Show icons on mobile, hide text contact info */
+@media (max-width: 768px) {
+  .contact-text-info {
+    display: none;
+  }
+
+  .contact-icons {
+    display: flex;
+  }
+}
+
+/* Contact page grid layout similar to bio - only for laptop/desktop */
+@media (min-width: 769px) {
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    align-items: start;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .contact-text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .contact-text-info {
+    text-align: left;
+  }
+
+  .contact-welcome-text p {
+    margin: 0;
+  }
+}
+
+/* Mobile layout - keep original centered layout */
+@media (max-width: 768px) {
+  .contact-content {
+    display: block;
+  }
+
+  .contact-text-content {
+    display: block;
+    text-align: center;
+  }
+
+  .contact-text-info {
+    text-align: center;
+  }
+
+  .contact-welcome-text p {
+    margin: 0 auto;
   }
 }

@@ -3,10 +3,120 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet" />
     <link rel="stylesheet" href="../style.css" />
     <title>Residuals – Monique Smith-McDowell</title>
     <style>
+      /* Spring-themed blob background */
+      .spring-blob {
+        position: fixed;
+        border-radius: 50%;
+        opacity: 0;
+        z-index: -1;
+        pointer-events: none;
+        animation: springBlobFloat 8s ease-in-out infinite;
+      }
+
+      .spring-blob1 {
+        width: 140px;
+        height: 140px;
+        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        top: 16%;
+        left: 9%;
+        animation-delay: 1s;
+        animation-duration: 11s;
+      }
+
+      .spring-blob2 {
+        width: 125px;
+        height: 125px;
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        top: 58%;
+        right: 13%;
+        animation-delay: 3s;
+        animation-duration: 9s;
+      }
+
+      .spring-blob3 {
+        width: 155px;
+        height: 155px;
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        bottom: 16%;
+        left: 14%;
+        animation-delay: 5s;
+        animation-duration: 13s;
+      }
+
+      .spring-blob4 {
+        width: 105px;
+        height: 105px;
+        background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+        top: 38%;
+        right: 26%;
+        animation-delay: 2s;
+        animation-duration: 10s;
+      }
+
+      .spring-blob5 {
+        width: 165px;
+        height: 165px;
+        background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+        bottom: 14%;
+        right: 9%;
+        animation-delay: 4s;
+        animation-duration: 12s;
+      }
+
+      .spring-blob6 {
+        width: 115px;
+        height: 115px;
+        background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);
+        top: 70%;
+        left: 4%;
+        animation-delay: 0s;
+        animation-duration: 8s;
+      }
+
+      @keyframes springBlobFloat {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0.2;
+        }
+        25% {
+          transform: translateY(-16px) rotate(90deg);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translateY(-9px) rotate(180deg);
+          opacity: 0.35;
+        }
+        75% {
+          transform: translateY(-26px) rotate(270deg);
+          opacity: 0.3;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .spring-blob {
+          opacity: 0.15;
+        }
+        .spring-blob1,
+        .spring-blob2,
+        .spring-blob3,
+        .spring-blob4,
+        .spring-blob5,
+        .spring-blob6 {
+          width: 50%;
+          height: auto;
+          aspect-ratio: 1;
+        }
+      }
+
       .work-container {
         padding: 8rem 2rem 4rem;
         max-width: 1000px;
@@ -52,8 +162,8 @@
         padding: 2rem 0;
         box-sizing: border-box;
         margin-top: 3rem;
-        margin-left: -2rem;
-        margin-right: -2rem;
+        margin-left: 0;
+        margin-right: 0;
       }
 
       .work-credits-content-wrapper {
@@ -94,12 +204,13 @@
         }
 
         .work-credits {
-          margin-left: -1rem;
-          margin-right: -1rem;
+          margin-left: 0;
+          margin-right: 0;
         }
 
         .work-credits-content-wrapper {
           padding: 0 1rem;
+          margin: 0 auto;
         }
       }
 
@@ -109,12 +220,13 @@
         }
 
         .work-credits {
-          margin-left: -0.8rem;
-          margin-right: -0.8rem;
+          margin-left: 0;
+          margin-right: 0;
         }
 
         .work-credits-content-wrapper {
           padding: 0 0.8rem;
+          margin: 0 auto;
         }
       }
 
@@ -212,14 +324,23 @@
   </head>
   <body>
     <canvas id="interactive-bg"></canvas>
+
+    <!-- Spring-themed background blobs -->
+    <div class="spring-blob spring-blob1"></div>
+    <div class="spring-blob spring-blob2"></div>
+    <div class="spring-blob spring-blob3"></div>
+    <div class="spring-blob spring-blob4"></div>
+    <div class="spring-blob spring-blob5"></div>
+    <div class="spring-blob spring-blob6"></div>
+
     <header>
       <nav>
         <a href="../index.html" data-en>Home</a>
         <a href="../index.html" data-de>Start</a>
         <a href="../bio.html" data-en>Bio</a>
         <a href="../bio.html" data-de>Über mich</a>
-        <a href="../work.html" data-en>Work</a>
-        <a href="../work.html" data-de>Arbeiten</a>
+        <a href="../work.html" data-en>Choreography</a>
+        <a href="../work.html" data-de>Choreografie</a>
         <a href="../pilates.html" data-en>Pilates</a>
         <a href="../pilates.html" data-de>Pilates</a>
         <a href="../contact.html" data-en>Contact</a>
@@ -231,10 +352,6 @@
       <button onclick="toggleLanguage('en')" class="active" id="enBtn">EN</button>
       <button onclick="toggleLanguage('de')" id="deBtn">DE</button>
     </div>
-
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="blob blob3"></div>
 
     <main class="work-container">
       <a href="../work.html" class="back-link" data-en>← Back</a>

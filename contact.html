@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>Contact – Monique Smith-McDowell</title>
     <style>
@@ -23,6 +27,26 @@
           display: none;
         }
       }
+      .contact-image-frame {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        border: 3px solid #fc2828; /* Red inner border */
+        box-shadow: 0 0 0 3px #262c35; /* Black outer border */
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .contact-image-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        object-position: center 0%;
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -34,8 +58,8 @@
         <a href="index.html" data-de>Start</a>
         <a href="bio.html" data-en>Bio</a>
         <a href="bio.html" data-de>Über mich</a>
-        <a href="work.html" data-en>Work</a>
-        <a href="work.html" data-de>Arbeiten</a>
+        <a href="work.html" data-en>Choreography</a>
+        <a href="work.html" data-de>Choreografie</a>
         <a href="pilates.html" data-en>Pilates</a>
         <a href="pilates.html" data-de>Pilates</a>
         <a href="contact.html" data-en>Contact</a>
@@ -55,48 +79,86 @@
     <main class="contact-container creative-contact">
       <h1 class="page-title" data-en></h1>
       <h1 class="page-title" data-de></h1>
-      <div class="contact-image-frame">
-        <img
-          src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747836981/COMPRESSED_Contact_img_1_c5ebsu.jpg"
-          alt="Monique Smith-McDowell" />
-      </div>
-      <h2 class="contact-name"></h2>
-      <div class="contact-links contact-icons">
-        <a href="mailto:moniquesmithmcdowell@hotmail.com" title="Email" class="icon-link" aria-label="Email">
-          <svg
-            width="36"
-            height="36"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#ff69b4"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round">
-            <rect x="3" y="5" width="18" height="14" rx="2" />
-            <polyline points="3 7 12 13 21 7" />
-          </svg>
-        </a>
-        <a
-          href="https://www.instagram.com/monsm_23/"
-          title="Instagram"
-          class="icon-link"
-          aria-label="Instagram"
-          target="_blank"
-          rel="noopener">
-          <svg
-            width="36"
-            height="36"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#ff69b4"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" />
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
-          </svg>
-        </a>
+
+      <div class="contact-content">
+        <div class="contact-image-frame">
+          <img
+            src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747836981/COMPRESSED_Contact_img_1_c5ebsu.jpg"
+            alt="Monique Smith-McDowell" />
+        </div>
+
+        <div class="contact-text-content">
+          <h2 class="contact-name"></h2>
+
+          <!-- Text-based contact information for laptop/desktop -->
+          <div class="contact-text-info">
+            <div class="contact-welcome-text" data-en>
+              <p>Whether you have a question, a collaboration in mind, or just want to connect, I'd love to hear from you.</p>
+            </div>
+            <div class="contact-welcome-text" data-de>
+              <p>
+                Ob Sie eine Frage haben, eine Zusammenarbeit im Sinn haben oder einfach nur in Kontakt treten möchten - ich freue mich
+                darauf, von Ihnen zu hören.
+              </p>
+            </div>
+
+            <div class="contact-text-item" data-en>
+              <span class="contact-label">Email:</span>
+              <a href="mailto:moniquesmithmcdowell@hotmail.com" class="contact-link">moniquesmithmcdowell@hotmail.com</a>
+            </div>
+            <div class="contact-text-item" data-de>
+              <span class="contact-label">E-Mail:</span>
+              <a href="mailto:moniquesmithmcdowell@hotmail.com" class="contact-link">moniquesmithmcdowell@hotmail.com</a>
+            </div>
+
+            <div class="contact-text-item" data-en>
+              <span class="contact-label">Instagram:</span>
+              <a href="https://www.instagram.com/monsm_23/" class="contact-link" target="_blank" rel="noopener">@monsm_23</a>
+            </div>
+            <div class="contact-text-item" data-de>
+              <span class="contact-label">Instagram:</span>
+              <a href="https://www.instagram.com/monsm_23/" class="contact-link" target="_blank" rel="noopener">@monsm_23</a>
+            </div>
+          </div>
+
+          <div class="contact-links contact-icons">
+            <a href="mailto:moniquesmithmcdowell@hotmail.com" title="Email" class="icon-link" aria-label="Email">
+              <svg
+                width="36"
+                height="36"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ff69b4"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2" />
+                <polyline points="3 7 12 13 21 7" />
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/monsm_23/"
+              title="Instagram"
+              class="icon-link"
+              aria-label="Instagram"
+              target="_blank"
+              rel="noopener">
+              <svg
+                width="36"
+                height="36"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#ff69b4"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </main>
 

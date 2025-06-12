@@ -83,11 +83,14 @@ if (!isTouchDevice()) {
         customCursor.classList.remove("hovered");
       });
     });
-
-    const savedLang = localStorage.getItem("preferredLanguage") || "en";
-    toggleLanguage(savedLang);
   });
 }
+
+// Language preference restoration - works on all devices
+document.addEventListener("DOMContentLoaded", () => {
+  const savedLang = localStorage.getItem("preferredLanguage") || "en";
+  toggleLanguage(savedLang);
+});
 
 document.addEventListener("mousemove", function (e) {
   document.documentElement.style.setProperty("--mouse-x", e.clientX + "px");
@@ -109,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let prevH = bgCanvas.height;
 
     // Define 4 thick colorful lines, top right to bottom left (135 degrees)
-    const colors = ["#FBE8E7", "#B2D1E8", "#B07B6D", "#FBECC5"];
+    const colors = ["#FFE99A", "#FFD586", "#FFAAAA", "#FF9898"];
     const lineWidth = 150;
     const numLines = 4;
     let progress = 0;
@@ -259,8 +262,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Check if we're on the index page by looking for specific elements
   const name = document.querySelector(".name");
   const subtitle = document.querySelector(".subtitle[data-en]");
-  const sparkleContainer = document.getElementById("sparkle-container");
-  const staticSparkleField = document.getElementById("static-sparkle-field");
 
   if (name && subtitle) {
     // Only run on index page
@@ -274,119 +275,6 @@ document.addEventListener("DOMContentLoaded", function () {
       name.style.transform = "";
       subtitle.style.transform = "";
     });
-
-    // Dynamic sparkle effect
-    if (sparkleContainer) {
-      function createSparkle(x, y) {
-        const sparkle = document.createElement("div");
-        const size = Math.random() * 8 + 6;
-        const colors = ["#FFD700", "#FF69B4", "#87CEEB", "#fff", "#FFB347"];
-        sparkle.style.position = "absolute";
-        sparkle.style.left = `${x - size / 2}px`;
-        sparkle.style.top = `${y - size / 2}px`;
-        sparkle.style.width = `${size}px`;
-        sparkle.style.height = `${size}px`;
-        sparkle.style.pointerEvents = "none";
-        sparkle.style.borderRadius = "50%";
-        sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        sparkle.style.opacity = "0.85";
-        sparkle.style.boxShadow = `0 0 16px 4px ${sparkle.style.background}55`;
-        sparkle.style.transform = `scale(${Math.random() * 0.7 + 0.7}) rotate(${Math.random() * 360}deg)`;
-        sparkle.style.transition = "opacity 0.7s, transform 0.7s";
-        sparkleContainer.appendChild(sparkle);
-        setTimeout(() => {
-          sparkle.style.opacity = "0";
-          sparkle.style.transform += " scale(1.7)";
-        }, 10);
-        setTimeout(() => {
-          sparkle.remove();
-        }, 700);
-      }
-
-      let sparkleThrottle = 0;
-      document.addEventListener("mousemove", (e) => {
-        sparkleThrottle++;
-        if (sparkleThrottle % 2 === 0) {
-          createSparkle(e.clientX, e.clientY);
-        }
-      });
-    }
-
-    // Static sparkle field (sand)
-    if (staticSparkleField) {
-      const staticSparkleCount = 400;
-      const staticSparkles = [];
-      const sandColors = ["#FFD700", "#FFB347", "#FFF8DC", "#EEDC82", "#F5DEB3"];
-
-      for (let i = 0; i < staticSparkleCount; i++) {
-        const grain = document.createElement("div");
-        const color = sandColors[Math.floor(Math.random() * sandColors.length)];
-        const x = Math.random() * window.innerWidth;
-        const y = Math.random() * window.innerHeight;
-        grain.style.position = "absolute";
-        grain.style.left = `${x}px`;
-        grain.style.top = `${y}px`;
-        grain.style.width = "4px";
-        grain.style.height = "4px";
-        grain.style.borderRadius = "50%";
-        grain.style.background = color;
-        grain.style.opacity = "0.8";
-        grain.style.transition = "left 0.22s cubic-bezier(.4,2,.6,1), top 0.22s cubic-bezier(.4,2,.6,1)";
-        staticSparkleField.appendChild(grain);
-        staticSparkles.push({ el: grain, x: x, y: y, vx: 0, vy: 0 });
-      }
-
-      if (!isTouchDevice()) {
-        // Desktop: grains react to mouse
-        document.addEventListener("mousemove", (e) => {
-          staticSparkles.forEach((grain) => {
-            const dx = e.clientX - grain.x;
-            const dy = e.clientY - grain.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 60) {
-              // Move away from cursor and update position
-              const angle = Math.atan2(dy, dx);
-              const moveDist = 30 * (1 - dist / 60);
-              grain.x = grain.x - Math.cos(angle) * moveDist;
-              grain.y = grain.y - Math.sin(angle) * moveDist;
-              grain.el.style.left = `${grain.x}px`;
-              grain.el.style.top = `${grain.y}px`;
-            }
-          });
-        });
-      } else {
-        // Mobile: grains float and travel by themselves
-        function animateSand() {
-          staticSparkles.forEach((grain) => {
-            // Give each grain a slow, random drift
-            if (!grain.vx && !grain.vy) {
-              grain.vx = (Math.random() - 0.5) * 0.5;
-              grain.vy = (Math.random() - 0.5) * 0.5;
-            }
-            // Occasionally change direction
-            if (Math.random() < 0.01) {
-              grain.vx += (Math.random() - 0.5) * 0.2;
-              grain.vy += (Math.random() - 0.5) * 0.2;
-            }
-            // Limit speed
-            grain.vx = Math.max(-0.7, Math.min(0.7, grain.vx));
-            grain.vy = Math.max(-0.7, Math.min(0.7, grain.vy));
-            // Move
-            grain.x += grain.vx;
-            grain.y += grain.vy;
-            // Wrap around screen
-            if (grain.x < 0) grain.x = window.innerWidth;
-            if (grain.x > window.innerWidth) grain.x = 0;
-            if (grain.y < 0) grain.y = window.innerHeight;
-            if (grain.y > window.innerHeight) grain.y = 0;
-            grain.el.style.left = `${grain.x}px`;
-            grain.el.style.top = `${grain.y}px`;
-          });
-          requestAnimationFrame(animateSand);
-        }
-        animateSand();
-      }
-    }
   }
 });
 

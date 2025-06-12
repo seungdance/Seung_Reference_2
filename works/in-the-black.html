@@ -3,10 +3,120 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet" />
     <link rel="stylesheet" href="../style.css" />
     <title>In the Black – Monique Smith-McDowell</title>
     <style>
+      /* Spring-themed blob background */
+      .spring-blob {
+        position: fixed;
+        border-radius: 50%;
+        opacity: 0;
+        z-index: -1;
+        pointer-events: none;
+        animation: springBlobFloat 8s ease-in-out infinite;
+      }
+
+      .spring-blob1 {
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        top: 18%;
+        left: 10%;
+        animation-delay: 2s;
+        animation-duration: 12s;
+      }
+
+      .spring-blob2 {
+        width: 130px;
+        height: 130px;
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        top: 55%;
+        right: 15%;
+        animation-delay: 4s;
+        animation-duration: 10s;
+      }
+
+      .spring-blob3 {
+        width: 160px;
+        height: 160px;
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        bottom: 18%;
+        left: 12%;
+        animation-delay: 1s;
+        animation-duration: 14s;
+      }
+
+      .spring-blob4 {
+        width: 110px;
+        height: 110px;
+        background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+        top: 32%;
+        right: 28%;
+        animation-delay: 3s;
+        animation-duration: 11s;
+      }
+
+      .spring-blob5 {
+        width: 170px;
+        height: 170px;
+        background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+        bottom: 12%;
+        right: 10%;
+        animation-delay: 5s;
+        animation-duration: 13s;
+      }
+
+      .spring-blob6 {
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);
+        top: 72%;
+        left: 5%;
+        animation-delay: 0s;
+        animation-duration: 9s;
+      }
+
+      @keyframes springBlobFloat {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0.2;
+        }
+        25% {
+          transform: translateY(-18px) rotate(90deg);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translateY(-10px) rotate(180deg);
+          opacity: 0.35;
+        }
+        75% {
+          transform: translateY(-28px) rotate(270deg);
+          opacity: 0.3;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .spring-blob {
+          opacity: 0.15;
+        }
+        .spring-blob1,
+        .spring-blob2,
+        .spring-blob3,
+        .spring-blob4,
+        .spring-blob5,
+        .spring-blob6 {
+          width: 50%;
+          height: auto;
+          aspect-ratio: 1;
+        }
+      }
+
       .work-container {
         padding: 8rem 2rem 4rem;
         max-width: 1000px;
@@ -55,6 +165,8 @@
         background: #f9f9f9;
         padding: 2rem;
         border-radius: 8px;
+        margin-left: 0;
+        margin-right: 0;
       }
 
       .work-credits h3 {
@@ -220,8 +332,8 @@
         padding: 2rem 0;
         box-sizing: border-box;
         margin-top: 3rem;
-        margin-left: -2rem;
-        margin-right: -2rem;
+        margin-left: 0;
+        margin-right: 0;
       }
 
       .work-credits-content-wrapper {
@@ -239,42 +351,53 @@
         }
 
         .work-additional-gallery {
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          grid-template-columns: 1fr;
           gap: 1rem;
         }
 
         .work-credits-fullwidth {
-          margin-left: -1rem;
-          margin-right: -1rem;
+          margin-left: 0;
+          margin-right: 0;
         }
 
         .work-credits-content-wrapper {
           padding: 0 1rem;
+          margin: 0 auto;
         }
       }
 
       @media (max-width: 480px) {
         .work-credits-fullwidth {
-          margin-left: -0.8rem;
-          margin-right: -0.8rem;
+          margin-left: 0;
+          margin-right: 0;
         }
 
         .work-credits-content-wrapper {
           padding: 0 0.8rem;
+          margin: 0 auto;
         }
       }
     </style>
   </head>
   <body>
     <canvas id="interactive-bg"></canvas>
+
+    <!-- Spring-themed background blobs -->
+    <div class="spring-blob spring-blob1"></div>
+    <div class="spring-blob spring-blob2"></div>
+    <div class="spring-blob spring-blob3"></div>
+    <div class="spring-blob spring-blob4"></div>
+    <div class="spring-blob spring-blob5"></div>
+    <div class="spring-blob spring-blob6"></div>
+
     <header>
       <nav>
         <a href="../index.html" data-en>Home</a>
         <a href="../index.html" data-de>Start</a>
         <a href="../bio.html" data-en>Bio</a>
         <a href="../bio.html" data-de>Über mich</a>
-        <a href="../work.html" data-en>Work</a>
-        <a href="../work.html" data-de>Arbeiten</a>
+        <a href="../work.html" data-en>Choreography</a>
+        <a href="../work.html" data-de>Choreografie</a>
         <a href="../pilates.html" data-en>Pilates</a>
         <a href="../pilates.html" data-de>Pilates</a>
         <a href="../contact.html" data-en>Contact</a>
@@ -286,10 +409,6 @@
       <button onclick="toggleLanguage('en')" class="active" id="enBtn">EN</button>
       <button onclick="toggleLanguage('de')" id="deBtn">DE</button>
     </div>
-
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="blob blob3"></div>
 
     <main class="work-container">
       <a href="../work.html" class="back-link" data-en>← Back</a>
@@ -372,14 +491,18 @@
         <div class="work-credits-content-wrapper">
           <div class="work-credits">
             <h3>Credits</h3>
-            <p>Choreography & Concept: Monique Smith-McDowell</p>
-            <p>Performers: Marleen Hendrickx, Danielle Huyghe</p>
-            <p>Artistic Collaboration: Alessio Schreurs</p>
-            <p>Music: Johann Sundermeier</p>
-            <p>Light Design & Technical Direction: Edwin van Steenbergen</p>
-            <p>Co-production: DansBrabant & Podium Bloos</p>
-            <p>With the support of: PLAN Talentontwikkeling Brabant & De Nieuwe Vorst</p>
-            <p>Photos: ©THE SCHMIDT</p>
+            <p>Choreography: Monique Smith-McDowell</p>
+            <p>Dance and Co-choreography: Anam (Lukas Lubisia)</p>
+            <p>Premiere performance: Samuel Govindin</p>
+            <p>Artistic audio description: Zwoisy Mears-Clarke</p>
+            <p>Audio description dramaturgy: Naomi Sanfo</p>
+            <p>Music: Mona M.</p>
+            <p>Light design: Joshua Paul</p>
+            <p>Dramaturgy: Regina Rossi</p>
+            <p>Co-production with K3 - Zentrum für Choreographie, Hamburg.</p>
+            <p>
+              Funded by the Ministry of Culture and Media of the Free and Hanseatic City of Hamburg and the Hamburgische Kulturstiftung.
+            </p>
           </div>
         </div>
       </div>
@@ -388,14 +511,16 @@
         <div class="work-credits-content-wrapper">
           <div class="work-credits">
             <h3>Credits</h3>
-            <p>Choreographie & Konzept: Monique Smith-McDowell</p>
-            <p>Performer: Marleen Hendrickx, Danielle Huyghe</p>
-            <p>Künstlerische Zusammenarbeit: Alessio Schreurs</p>
-            <p>Musik: Johann Sundermeier</p>
-            <p>Lichtdesign & Technische Leitung: Edwin van Steenbergen</p>
-            <p>Koproduktion: DansBrabant & Podium Bloos</p>
-            <p>Mit Unterstützung von: PLAN Talentontwikkeling Brabant & De Nieuwe Vorst</p>
-            <p>Fotos: ©THE SCHMIDT</p>
+            <p>Choreographie: Monique Smith-McDowell</p>
+            <p>Tanz und Co-Choreographie: Anam (Lukas Lubisia)</p>
+            <p>Premieren-Performance: Samuel Govindin</p>
+            <p>Künstlerische Audiodeskription: Zwoisy Mears-Clarke</p>
+            <p>Audiodeskription Dramaturgie: Naomi Sanfo</p>
+            <p>Musik: Mona M.</p>
+            <p>Lichtdesign: Joshua Paul</p>
+            <p>Dramaturgie: Regina Rossi</p>
+            <p>Koproduktion mit K3 - Zentrum für Choreographie, Hamburg.</p>
+            <p>Gefördert vom Ministerium für Kultur und Medien der Freien und Hansestadt Hamburg und der Hamburgischen Kulturstiftung.</p>
           </div>
         </div>
       </div>

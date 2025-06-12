@@ -3,29 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>Pilates – Monique Smith-McDowell</title>
     <style>
       .pilates-text {
         flex: 2 1 400px;
-        font-size: 1rem;
-        line-height: 1.7;
+        font-size: 1.1rem;
+        line-height: 1.8;
         color: #333;
-        background: rgba(255, 255, 255, 0.7);
+        background: rgba(255, 255, 255, 0.9);
         border-radius: 1.5rem;
-        padding: 2rem 2rem 1rem 2rem;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        padding: 3rem 3rem 2rem 3rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         text-align: justify;
         text-justify: inter-word;
-        letter-spacing: 0.01em;
+        max-width: 100%;
+        width: 100%;
+        font-family: "Jost", sans-serif;
       }
 
       .pilates-text p {
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
         text-align: justify;
         text-justify: inter-word;
-        word-spacing: 0.05em;
+        word-spacing: 0.02em;
+        letter-spacing: 0.01em;
+        font-weight: 400;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
       }
 
       .pilates-text p:last-child {
@@ -33,46 +44,98 @@
       }
 
       .pilates-text h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
         margin-top: 0;
-        margin-bottom: 2rem;
-        color: #ff69b4;
-        font-family: "Fredoka", "Inter", sans-serif;
+        margin-bottom: 2.5rem;
+        color: #333;
+        font-family: "Jost", sans-serif;
         font-weight: 600;
         text-align: left;
+        line-height: 1.3;
+      }
+      .work-additional-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
       }
 
-      @media (max-width: 900px) {
+      .work-additional-gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        aspect-ratio: 3/2;
+        transition: transform 0.3s ease;
+      }
+
+      .work-additional-gallery img:hover {
+        transform: scale(1.02);
+      }
+
+      /* Desktop dash styling */
+      .desktop-dash {
+        display: inline;
+      }
+
+      @media (max-width: 768px) {
+        .desktop-dash {
+          display: none;
+        }
+      }
+
+      @media (max-width: 768px) {
         .pilates-text {
-          font-size: 1.05rem;
-          line-height: 1.75;
-          padding: 1.5rem 1.5rem 1rem 1.5rem;
+          font-size: 1.15rem;
+          line-height: 1.8;
+          padding: 2rem 1.5rem 1.5rem 1.5rem;
+          margin: 0;
+          text-align: justify;
+          text-justify: inter-word;
+          width: 100%;
+          box-sizing: border-box;
         }
 
         .pilates-text p {
-          margin-bottom: 1.8rem;
+          margin-bottom: 2.2rem;
+          text-align: justify;
+          text-justify: inter-word;
+          hyphens: auto;
+          -webkit-hyphens: auto;
+          -ms-hyphens: auto;
         }
 
         .pilates-text h2 {
-          font-size: 1.8rem;
-          margin-bottom: 1.8rem;
+          font-size: 2rem;
+          margin-bottom: 2.2rem;
         }
       }
 
       @media (max-width: 600px) {
         .pilates-text {
-          font-size: 1rem;
-          line-height: 1.7;
-          padding: 1.2rem 1.2rem 1rem 1.2rem;
+          font-size: 1.1rem;
+          line-height: 1.8;
+          padding: 1.5rem 1rem 1rem 1rem;
+          margin: 0;
+          text-align: justify;
+          text-justify: inter-word;
+          width: 100%;
+          box-sizing: border-box;
         }
 
         .pilates-text p {
-          margin-bottom: 1.5rem;
+          margin-bottom: 2rem;
+          text-align: justify;
+          text-justify: inter-word;
+          hyphens: auto;
+          -webkit-hyphens: auto;
+          -ms-hyphens: auto;
         }
 
         .pilates-text h2 {
-          font-size: 1.5rem;
-          margin-bottom: 1.5rem;
+          font-size: 1.8rem;
+          margin-bottom: 2rem;
         }
       }
     </style>
@@ -89,8 +152,8 @@
         <a href="index.html" data-de>Start</a>
         <a href="bio.html" data-en>Bio</a>
         <a href="bio.html" data-de>Über mich</a>
-        <a href="work.html" data-en>Work</a>
-        <a href="work.html" data-de>Arbeiten</a>
+        <a href="work.html" data-en>Choreography</a>
+        <a href="work.html" data-de>Choreografie</a>
         <a href="pilates.html" data-en>Pilates</a>
         <a href="pilates.html" data-de>Pilates</a>
         <a href="contact.html" data-en>Contact</a>
@@ -106,24 +169,34 @@
     <main class="main-card">
       <h1 class="page-title" data-en></h1>
       <h1 class="page-title" data-de></h1>
-      <div class="pilates-video-hero">
-        <video
-          width="100%"
-          height="100%"
-          controls
-          autoplay
-          muted
-          playsinline
-          poster="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835211/Monique_8_aooyli.jpg"
-          style="object-fit: cover; object-position: center; width: 100%; height: 100%; border-radius: 1.5rem; transform: scale(1.02)">
-          <source src="https://res.cloudinary.com/dwlzn6c4l/video/upload/v1747835398/Pilates_Video_1_apiseb.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
       <div class="pilates-content">
         <div class="pilates-text">
           <div data-en>
-            <h2>Discover Your Strength – Inside and Out</h2>
+            <h2>
+              Discover Your Strength
+              <span class="desktop-dash">-</span>
+              Inside and Out
+            </h2>
+            <div class="pilates-video-hero">
+              <video
+                width="100%"
+                height="100%"
+                controls
+                autoplay
+                muted
+                playsinline
+                style="
+                  object-fit: cover;
+                  object-position: center;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 1.5rem;
+                  transform: scale(1.02);
+                ">
+                <source src="https://res.cloudinary.com/dwlzn6c4l/video/upload/v1747835398/Pilates_Video_1_apiseb.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
             <p>
               Finding healthier practices of movement is something I strive for.
               <br />
@@ -147,6 +220,26 @@
           </div>
           <div data-de>
             <h2>Entdecke deine Stärke – von innen und außen</h2>
+            <div class="pilates-video-hero">
+              <video
+                width="100%"
+                height="100%"
+                controls
+                autoplay
+                muted
+                playsinline
+                style="
+                  object-fit: cover;
+                  object-position: center;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 1.5rem;
+                  transform: scale(1.02);
+                ">
+                <source src="https://res.cloudinary.com/dwlzn6c4l/video/upload/v1747835398/Pilates_Video_1_apiseb.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
             <p>
               Gesündere Bewegungspraktiken zu finden, ist etwas, das mir sehr am Herzen liegt.
               <br />
@@ -171,13 +264,15 @@
           </div>
         </div>
       </div>
-      <div class="pilates-images">
+
+      <div class="work-additional-gallery">
         <img
-          src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835211/Monique_8_aooyli.jpg"
+          src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835228/Pilates_img_3_sc2kgu.jpg"
           alt="Monique Smith-McDowell Pilates"
           class="pilates-image" />
+
         <img
-          src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835187/Monique_2_ktcntk.jpg"
+          src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835216/Pilates_img_2_wcf3qp.jpg"
           alt="Monique Smith-McDowell Pilates"
           class="pilates-image" />
       </div>

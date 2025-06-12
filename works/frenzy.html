@@ -3,10 +3,120 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet" />
     <link rel="stylesheet" href="../style.css" />
     <title>FRENZY – Monique Smith-McDowell</title>
     <style>
+      /* Spring-themed blob background */
+      .spring-blob {
+        position: fixed;
+        border-radius: 50%;
+        opacity: 0;
+        z-index: -1;
+        pointer-events: none;
+        animation: springBlobFloat 8s ease-in-out infinite;
+      }
+
+      .spring-blob1 {
+        width: 145px;
+        height: 145px;
+        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        top: 17%;
+        left: 11%;
+        animation-delay: 2s;
+        animation-duration: 12s;
+      }
+
+      .spring-blob2 {
+        width: 135px;
+        height: 135px;
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        top: 56%;
+        right: 14%;
+        animation-delay: 4s;
+        animation-duration: 10s;
+      }
+
+      .spring-blob3 {
+        width: 150px;
+        height: 150px;
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        bottom: 17%;
+        left: 13%;
+        animation-delay: 1s;
+        animation-duration: 14s;
+      }
+
+      .spring-blob4 {
+        width: 108px;
+        height: 108px;
+        background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+        top: 36%;
+        right: 27%;
+        animation-delay: 3s;
+        animation-duration: 11s;
+      }
+
+      .spring-blob5 {
+        width: 168px;
+        height: 168px;
+        background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+        bottom: 13%;
+        right: 11%;
+        animation-delay: 5s;
+        animation-duration: 13s;
+      }
+
+      .spring-blob6 {
+        width: 118px;
+        height: 118px;
+        background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);
+        top: 71%;
+        left: 6%;
+        animation-delay: 0s;
+        animation-duration: 9s;
+      }
+
+      @keyframes springBlobFloat {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0.2;
+        }
+        25% {
+          transform: translateY(-17px) rotate(90deg);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translateY(-11px) rotate(180deg);
+          opacity: 0.35;
+        }
+        75% {
+          transform: translateY(-27px) rotate(270deg);
+          opacity: 0.3;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .spring-blob {
+          opacity: 0.15;
+        }
+        .spring-blob1,
+        .spring-blob2,
+        .spring-blob3,
+        .spring-blob4,
+        .spring-blob5,
+        .spring-blob6 {
+          width: 50%;
+          height: auto;
+          aspect-ratio: 1;
+        }
+      }
+
       .work-container {
         padding: 8rem 2rem 4rem;
         max-width: 1000px;
@@ -28,66 +138,6 @@
       .work-year {
         font-size: 1.2rem;
         color: #666;
-      }
-
-      .work-image {
-        width: 100%;
-        aspect-ratio: 16/9;
-        background: #f5f5f5;
-        border-radius: 8px;
-        margin-bottom: 3rem;
-        position: relative;
-      }
-
-      .work-image::before {
-        content: "Image Placeholder";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        color: #999;
-        font-size: 1.2rem;
-      }
-
-      .work-gallery {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-        margin-bottom: 3rem;
-      }
-
-      .work-gallery img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 8px;
-        aspect-ratio: 3/2;
-        transition: transform 0.3s ease;
-      }
-
-      .work-gallery img:hover {
-        transform: scale(1.02);
-      }
-
-      .work-gallery .full-width {
-        grid-column: 1 / -1;
-        aspect-ratio: 16/9;
-      }
-
-      .work-gallery img.show-whole {
-        object-fit: contain;
-        background: #f5f5f5;
-      }
-
-      .work-gallery.two-grid .main-img {
-        width: 100%;
-        height: 100%;
-        aspect-ratio: 16/9;
-        object-fit: cover;
-        object-position: 50% 30%;
-        border-radius: 8px;
-        background: none;
-        display: block;
       }
 
       .work-description {
@@ -115,6 +165,8 @@
         background: #f9f9f9;
         padding: 2rem;
         border-radius: 8px;
+        margin-left: 0;
+        margin-right: 0;
       }
 
       .work-credits h3 {
@@ -137,20 +189,6 @@
           font-size: 2.5rem;
         }
 
-        .work-gallery {
-          grid-template-columns: 1fr;
-          gap: 1.5rem;
-        }
-
-        .work-credits-fullwidth {
-          margin-left: -1rem;
-          margin-right: -1rem;
-        }
-
-        .work-credits-content-wrapper {
-          padding: 0 1rem;
-        }
-
         .work-description {
           font-size: 1.05rem;
           line-height: 1.7;
@@ -171,15 +209,6 @@
       @media (max-width: 480px) {
         .work-container {
           padding: 5rem 0.8rem 1.5rem;
-        }
-
-        .work-credits-fullwidth {
-          margin-left: -0.8rem;
-          margin-right: -0.8rem;
-        }
-
-        .work-credits-content-wrapper {
-          padding: 0 0.8rem;
         }
 
         .work-description {
@@ -233,24 +262,54 @@
         }
       }
 
-      /* Styles for the new main layout grid */
+      /* Styles for the new main layout grid - consistent with other work pages */
       .work-layout-grid {
         display: flex;
-        gap: 3rem; /* Space between gallery and text */
+        flex-direction: column;
+        gap: 2rem;
         align-items: flex-start;
-        margin-bottom: 3rem; /* Space below the layout grid */
+        margin-bottom: 3rem;
       }
 
-      .work-layout-grid > .work-gallery-column {
-        flex: 0 1 55%; /* Gallery column: no grow, can shrink, 55% basis */
-        /* The existing .work-gallery styles will apply within this column */
+      .work-layout-grid > .work-main-image-column {
+        width: 100%;
+      }
+
+      .work-layout-grid > .work-main-image-column img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
       }
 
       .work-layout-grid > .work-text-content {
-        flex: 1 1 45%; /* Text column: can grow and shrink, 45% basis */
+        width: 100%;
       }
 
-      /* Styles for full-width credits - same as residuals.html */
+      /* New styles for the additional gallery */
+      .work-additional-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .work-additional-gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        aspect-ratio: 3/2;
+        transition: transform 0.3s ease;
+      }
+
+      .work-additional-gallery img:hover {
+        transform: scale(1.02);
+      }
+
+      /* Styles for full-width credits - consistent with other work pages */
       .work-credits-fullwidth {
         background: #f9f9f9;
         width: 100%;
@@ -258,8 +317,8 @@
         padding: 2rem 0;
         box-sizing: border-box;
         margin-top: 3rem;
-        margin-left: -2rem;
-        margin-right: -2rem;
+        margin-left: 0;
+        margin-right: 0;
       }
 
       .work-credits-content-wrapper {
@@ -269,28 +328,76 @@
         box-sizing: border-box;
       }
 
-      /* Responsive stacking for the main layout */
+      /* Responsive stacking for the main layout - consistent */
       .work-layout-grid {
         flex-direction: column;
         gap: 2rem;
       }
 
-      .work-layout-grid > .work-gallery-column,
+      .work-layout-grid > .work-main-image-column,
       .work-layout-grid > .work-text-content {
-        flex-basis: 100%; /* Full width when stacked */
+        flex-basis: 100%;
+      }
+
+      @media (max-width: 768px) {
+        .work-layout-grid {
+          flex-direction: column;
+          gap: 2rem;
+        }
+
+        .work-layout-grid > .work-main-image-column,
+        .work-layout-grid > .work-text-content {
+          flex-basis: 100%;
+        }
+
+        .work-additional-gallery {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .work-credits-fullwidth {
+          margin-left: 0;
+          margin-right: 0;
+        }
+        .work-credits-content-wrapper {
+          padding: 0 1rem;
+          margin: 0 auto;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .work-credits-fullwidth {
+          margin-left: 0;
+          margin-right: 0;
+        }
+        .work-credits-content-wrapper {
+          padding: 0 0.8rem;
+          margin: 0 auto;
+        }
       }
     </style>
   </head>
   <body>
     <canvas id="interactive-bg"></canvas>
+
+    <!-- Spring-themed background blobs -->
+    <div class="spring-blob spring-blob1"></div>
+    <div class="spring-blob spring-blob2"></div>
+    <div class="spring-blob spring-blob3"></div>
+    <div class="spring-blob spring-blob4"></div>
+    <div class="spring-blob spring-blob5"></div>
+    <div class="spring-blob spring-blob6"></div>
+
     <header>
       <nav>
         <a href="../index.html" data-en>Home</a>
         <a href="../index.html" data-de>Start</a>
         <a href="../bio.html" data-en>Bio</a>
         <a href="../bio.html" data-de>Über mich</a>
-        <a href="../work.html" data-en>Work</a>
-        <a href="../work.html" data-de>Arbeiten</a>
+        <a href="../work.html" data-en>Choreography</a>
+        <a href="../work.html" data-de>Choreografie</a>
         <a href="../pilates.html" data-en>Pilates</a>
         <a href="../pilates.html" data-de>Pilates</a>
         <a href="../contact.html" data-en>Contact</a>
@@ -303,10 +410,6 @@
       <button onclick="toggleLanguage('de')" id="deBtn">DE</button>
     </div>
 
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-    <div class="blob blob3"></div>
-
     <main class="work-container">
       <a href="../work.html" class="back-link" data-en>← Back</a>
       <a href="../work.html" class="back-link" data-de style="display: none">← Zurück</a>
@@ -317,18 +420,12 @@
       </div>
 
       <div class="work-layout-grid">
-        <div class="work-gallery-column">
-          <div class="work-gallery two-grid">
-            <img
-              src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747836982/COMPRESSED_Work_img_Frenzy_ti5egh.jpg"
-              alt="FRENZY - Performance Image 1"
-              class="show-whole main-img" />
-            <img
-              src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835327/Work_img_Franzy_2_shx4op.jpg"
-              alt="FRENZY - Performance Image 2"
-              class="side-img" />
-          </div>
+        <div class="work-main-image-column">
+          <img
+            src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1749593430/thumbnail-3_x0zugo.jpg"
+            alt="Frenzy - Main Performance Image" />
         </div>
+
         <div class="work-text-content">
           <div class="work-description" data-en>
             <p>
@@ -353,6 +450,12 @@
           </div>
         </div>
       </div>
+      <div class="work-additional-gallery">
+        <img src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1749593430/thumbnail_svegbh.jpg" alt="Frenzy - Performance Image 2" />
+        <img
+          src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1749593430/thumbnail-2_xva6ih.jpg"
+          alt="Frenzy - Performance Image 3" />
+      </div>
 
       <div class="work-credits-fullwidth" data-en>
         <div class="work-credits-content-wrapper">
@@ -360,10 +463,11 @@
             <h3>Credits</h3>
             <p>Artistic Direction: Uta Engel</p>
             <p>Concept & Choreography: Monique Smith-McDowell, Sina Rundel, and Uta Engel</p>
-            <p>Performers: Students of the Contemporary Dance School Hamburg</p>
-            <p>Music: Johann Sundermeier</p>
-            <p>Funded by: Feldtmann Kulturell, Claussen Simon Stiftung</p>
-            <p>Performances: LICHTHOF Theater Hamburg (May 2021)</p>
+            <p>
+              Dance & Co-Choreography: Ana Ruth, Salcido Roa, Aurora Neri, Christina Streich, Francesca Berno, Gloria Carobini, Henriette
+              Charlotte Bethge, Isabela Abad, Isidora Soto Frías, Lourdes Maldonado Torres, Malina Pepita Oceane Freidig, Nuna Valls Bayot,
+              Olivia Shoesmith, Paula Planas, Sahra Maria Abbassi
+            </p>
           </div>
         </div>
       </div>
@@ -374,10 +478,11 @@
             <h3>Credits</h3>
             <p>Künstlerische Leitung: Uta Engel</p>
             <p>Konzept & Choreographie: Monique Smith-McDowell, Sina Rundel und Uta Engel</p>
-            <p>Performer:innen: Studierende der Contemporary Dance School Hamburg</p>
-            <p>Musik: Johann Sundermeier</p>
-            <p>Gefördert durch: Feldtmann Kulturell, Claussen Simon Stiftung</p>
-            <p>Vorstellungen: LICHTHOF Theater Hamburg (Mai 2021)</p>
+            <p>
+              Tanz & Co-Choreographie: Ana Ruth, Salcido Roa, Aurora Neri, Christina Streich, Francesca Berno, Gloria Carobini, Henriette
+              Charlotte Bethge, Isabela Abad, Isidora Soto Frías, Lourdes Maldonado Torres, Malina Pepita Oceane Freidig, Nuna Valls Bayot,
+              Olivia Shoesmith, Paula Planas, Sahra Maria Abbassi
+            </p>
           </div>
         </div>
       </div>
