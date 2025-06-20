@@ -111,8 +111,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let prevW = bgCanvas.width;
     let prevH = bgCanvas.height;
 
-    // Define 4 thick colorful lines, top right to bottom left (135 degrees)
-    const colors = ["#FFE99A", "#FFD586", "#FFAAAA", "#FF9898"];
+    // Define 4 thick colorful lines, with soft pastel gradients
+    const gradientPairs = [
+      ["#ffdde1", "#fce7f3"], // Soft Pink
+      ["#d1f3f1", "#fdecf2"], // Soft Teal to Pink
+      ["#e4bad5", "#fffbdd"], // Soft Purple to Yellow
+      ["#c4faff", "#d4e2ff"], // Soft Blue
+    ];
     const lineWidth = 150;
     const numLines = 4;
     let progress = 0;
@@ -124,9 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const gap = bgCanvas.width / (numLines + 0.1);
       for (let i = 0; i < numLines; i++) {
         ctx.save();
-        ctx.strokeStyle = colors[i % colors.length];
-        ctx.lineWidth = lineWidth;
-        ctx.lineCap = "round";
+
         // Start at top right, offset by gap
         const x0 = bgCanvas.width - i * gap;
         const y0 = -lineWidth * 0.7;
@@ -134,6 +137,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const y1 = bgCanvas.height + lineWidth * 0.7;
         const dx = x1 - x0;
         const dy = y1 - y0;
+
+        // Create gradient along the line direction
+        const gradient = ctx.createLinearGradient(x0, y0, x1, y1);
+        const colors = gradientPairs[i % gradientPairs.length];
+
+        gradient.addColorStop(0, colors[0]);
+        gradient.addColorStop(1, colors[1]);
+
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = lineWidth;
+        ctx.lineCap = "round";
+
         ctx.beginPath();
         ctx.moveTo(x0, y0);
         ctx.lineTo(x0 + dx * progress, y0 + dy * progress);
