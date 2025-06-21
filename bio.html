@@ -123,17 +123,84 @@
           line-height: 1.7;
         }
       }
+      .bio-image-carousel-container {
+        position: relative;
+        width: 312px;
+        height: 312px;
+        margin: 0 auto 2rem auto;
+        perspective: 1500px;
+        transform-style: preserve-3d;
+      }
       .bio-image-outer {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 300px; /* 300px image + 2*10px border */
+        width: 300px;
         height: 300px;
         border-radius: 50%;
-        border: 6px solid #262c35; /* Black outer border */
+        border: 6px solid #262c35;
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
         background: #fff;
-        margin: 0 auto 2rem auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform 0.6s ease, opacity 0.6s ease, z-index 0.6s;
+        opacity: 0.7;
+        transform: scale(0.8);
+        cursor: pointer;
+      }
+      .bio-image-outer.active {
+        transform: translateZ(100px) scale(1);
+        opacity: 1;
+        z-index: 3;
+      }
+      .bio-image-outer.prev {
+        transform: translateX(-110px) rotateY(30deg) translateZ(-50px) scale(0.8);
+        z-index: 2;
+      }
+      .bio-image-outer.next {
+        transform: translateX(110px) rotateY(-30deg) translateZ(-50px) scale(0.8);
+        z-index: 2;
+      }
+      .bio-image-outer:not(.active):not(.prev):not(.next) {
+        opacity: 0;
+        transform: scale(0.5);
+        z-index: 1;
+      }
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(38, 44, 53, 0.4);
+        color: white;
+        border: none;
+        font-size: 1.8rem;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10;
+        border-radius: 50%;
+        width: 44px;
+        height: 44px;
+        line-height: 44px;
+        text-align: center;
+        transition: background 0.3s;
+      }
+      .carousel-btn:hover {
+        background: rgba(38, 44, 53, 0.7);
+      }
+      .prev-btn {
+        left: -55px;
+      }
+      .next-btn {
+        right: -55px;
+      }
+      @media (max-width: 480px) {
+        .prev-btn {
+          left: -10px;
+        }
+        .next-btn {
+          right: -10px;
+        }
       }
       .bio-image {
         width: 300px;
@@ -144,6 +211,16 @@
         border: 3px solid #ff2a2a; /* Red inner border */
         background: #f8f8f8;
         box-shadow: none;
+      }
+
+      html,
+      body {
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+      .bio-text {
+        word-break: break-word;
+        overflow-wrap: break-word;
       }
     </style>
   </head>
@@ -194,11 +271,16 @@
       </div>
 
       <div class="bio-content">
-        <div class="bio-image-outer">
-          <img
-            src="https://res.cloudinary.com/dwlzn6c4l/image/upload/v1747835167/Bio_img_4_dbwyz3.jpg"
-            alt="Monique Smith-McDowell portrait"
-            class="bio-image" />
+        <div class="bio-image-carousel-container">
+          <div class="bio-image-outer active">
+            <img src="website photos/Bio_img_4.jpg" alt="Monique Smith-McDowell portrait 1" class="bio-image" />
+          </div>
+          <div class="bio-image-outer">
+            <img src="website photos/Bio_img_5.jpg" alt="Monique Smith-McDowell portrait 2" class="bio-image" />
+          </div>
+          <div class="bio-image-outer">
+            <img src="website photos/Bio_img_3.jpg" alt="Monique Smith-McDowell portrait 3" class="bio-image" />
+          </div>
         </div>
         <div class="bio-text">
           <div data-en>

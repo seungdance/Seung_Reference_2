@@ -422,3 +422,58 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// --- BIO PAGE IMAGE CAROUSEL ---
+document.addEventListener("DOMContentLoaded", () => {
+  const carouselContainer = document.querySelector(".bio-image-carousel-container");
+  if (!carouselContainer) return;
+
+  const imageOuters = Array.from(carouselContainer.querySelectorAll(".bio-image-outer"));
+  let currentIndex = 0;
+
+  function updateCarousel(newIndex, oldIndex) {
+    currentIndex = newIndex;
+    const n = imageOuters.length;
+
+    imageOuters.forEach((img, i) => {
+      img.classList.remove("active", "prev", "next");
+
+      if (i === currentIndex) {
+        img.classList.add("active");
+      } else if (i === (currentIndex + 1) % n) {
+        img.classList.add("next");
+      } else if (i === (currentIndex - 1 + n) % n) {
+        img.classList.add("prev");
+      }
+    });
+  }
+
+  carouselContainer.addEventListener("click", (e) => {
+    const target = e.target.closest(".bio-image-outer");
+    if (!target) return;
+
+    const n = imageOuters.length;
+    const oldIndex = currentIndex;
+
+    if (target.classList.contains("next")) {
+      updateCarousel((currentIndex + 1) % n, oldIndex);
+    } else if (target.classList.contains("prev")) {
+      updateCarousel((currentIndex - 1 + n) % n, oldIndex);
+    } else if (target.classList.contains("active")) {
+      updateCarousel((currentIndex + 1) % n, oldIndex);
+    }
+  });
+
+  // Initial setup
+  updateCarousel(currentIndex, -1);
+});
+
+// Robustly hide custom cursor on any device detected as touch (including Android/Samsung quirks)
+document.addEventListener("DOMContentLoaded", () => {
+  if (isTouchDevice()) {
+    const customCursor = document.querySelector(".custom-cursor");
+    if (customCursor) {
+      customCursor.style.display = "none";
+    }
+  }
+});
