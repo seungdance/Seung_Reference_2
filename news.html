@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Monique - News</title>
+    <style>
+      /* Spring-themed blob background */
+      .spring-blob {
+        position: fixed;
+        border-radius: 50%;
+        opacity: 0;
+        z-index: -1;
+        pointer-events: none;
+        animation: springBlobFloat 8s ease-in-out infinite;
+      }
+
+      .spring-blob1 {
+        width: 160px;
+        height: 160px;
+        background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        top: 20%;
+        left: 8%;
+        animation-delay: 1s;
+        animation-duration: 11s;
+      }
+
+      .spring-blob2 {
+        width: 120px;
+        height: 120px;
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        top: 65%;
+        right: 12%;
+        animation-delay: 3s;
+        animation-duration: 9s;
+      }
+
+      .spring-blob3 {
+        width: 140px;
+        height: 140px;
+        background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        bottom: 25%;
+        left: 15%;
+        animation-delay: 5s;
+        animation-duration: 13s;
+      }
+
+      .spring-blob4 {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+        top: 35%;
+        right: 25%;
+        animation-delay: 2s;
+        animation-duration: 10s;
+      }
+
+      .spring-blob5 {
+        width: 180px;
+        height: 180px;
+        background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+        bottom: 15%;
+        right: 8%;
+        animation-delay: 4s;
+        animation-duration: 12s;
+      }
+
+      .spring-blob6 {
+        width: 110px;
+        height: 110px;
+        background: linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%);
+        top: 75%;
+        left: 3%;
+        animation-delay: 0s;
+        animation-duration: 8s;
+      }
+
+      @keyframes springBlobFloat {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+          opacity: 0.25;
+        }
+        25% {
+          transform: translateY(-15px) rotate(90deg);
+          opacity: 0.35;
+        }
+        50% {
+          transform: translateY(-8px) rotate(180deg);
+          opacity: 0.4;
+        }
+        75% {
+          transform: translateY(-25px) rotate(270deg);
+          opacity: 0.35;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .spring-blob {
+          opacity: 0.15;
+        }
+        .spring-blob1,
+        .spring-blob2,
+        .spring-blob3,
+        .spring-blob4,
+        .spring-blob5,
+        .spring-blob6 {
+          width: 50%;
+          height: auto;
+          aspect-ratio: 1;
+        }
+      }
+
+      .news-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .news-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        width: 100%;
+      }
+
+      .news-title {
+        font-family: "Jost", sans-serif;
+        font-weight: 700;
+        font-size: 3.5rem;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      @media (max-width: 768px) {
+        .news-title {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .news-title {
+          font-size: 2rem;
+        }
+      }
+
+      .news-content {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+      }
+
+      .news-placeholder {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: #666;
+        font-family: "Jost", sans-serif;
+        font-size: 1.2rem;
+        line-height: 1.6;
+      }
+
+      .news-placeholder h2 {
+        color: #333;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        font-weight: 600;
+      }
+
+      .news-placeholder p {
+        margin-bottom: 1.5rem;
+      }
+
+      .news-grid {
+        display: grid;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .news-item {
+        background: #fff;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        border-left: 4px solid #ff2a2a;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .news-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      }
+
+      .news-item h3 {
+        color: #333;
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .news-item .date {
+        color: #888;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+      }
+
+      .news-item p {
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      .news-item .read-more {
+        color: #ff2a2a;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+      }
+
+      .news-item .read-more:hover {
+        color: #d40000;
+      }
+
+      @media (max-width: 768px) {
+        .news-content {
+          padding: 1.5rem;
+          margin: 0 1rem;
+        }
+
+        .news-placeholder {
+          padding: 2rem 1rem;
+          font-size: 1.1rem;
+        }
+
+        .news-placeholder h2 {
+          font-size: 1.6rem;
+        }
+      }
+
+      html,
+      body {
+        max-width: 100vw;
+        overflow-x: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="custom-cursor"></div>
+    <canvas id="interactive-bg"></canvas>
+
+    <!-- Spring-themed background blobs -->
+    <div class="spring-blob spring-blob1"></div>
+    <div class="spring-blob spring-blob2"></div>
+    <div class="spring-blob spring-blob3"></div>
+    <div class="spring-blob spring-blob4"></div>
+    <div class="spring-blob spring-blob5"></div>
+    <div class="spring-blob spring-blob6"></div>
+
+    <header>
+      <nav>
+        <a href="index.html" data-en>Home</a>
+        <a href="index.html" data-de>Start</a>
+        <a href="bio.html" data-en>Bio</a>
+        <a href="bio.html" data-de>Über mich</a>
+        <a href="work.html" data-en>Choreography</a>
+        <a href="work.html" data-de>Choreografie</a>
+        <a href="pilates.html" data-en>Pilates</a>
+        <a href="pilates.html" data-de>Pilates</a>
+        <a href="news.html" data-en>News</a>
+        <a href="news.html" data-de>News</a>
+        <a href="contact.html" data-en>Contact</a>
+        <a href="contact.html" data-de>Kontakt</a>
+      </nav>
+    </header>
+
+    <div class="language-toggle">
+      <button onclick="toggleLanguage('en')" class="active" id="enBtn">EN</button>
+      <button onclick="toggleLanguage('de')" id="deBtn">DE</button>
+    </div>
+
+    <main class="news-container">
+      <div class="news-header">
+        <h1 class="news-title" data-en>What's new?</h1>
+        <h1 class="news-title" data-de>Was ist neu?</h1>
+      </div>
+
+      <div class="news-content">
+        <div class="news-placeholder" style="display: none">
+          <h2>No news available</h2>
+          <p>We're updating our news section. Please check back later.</p>
+        </div>
+
+        <div class="news-grid">
+          <article class="news-item">
+            <h3>New Performance Announced</h3>
+            <div class="date">March 15, 2025</div>
+            <p>
+              We're excited to announce our upcoming performance at the Hamburg Theater. This new piece explores themes of identity and
+              belonging through contemporary dance.
+            </p>
+            <a href="#" class="read-more">Read more →</a>
+          </article>
+
+          <article class="news-item">
+            <h3>Workshop Series Starting</h3>
+            <div class="date">March 10, 2025</div>
+            <p>
+              Join us for a series of movement workshops exploring contemporary dance techniques. Open to all levels, from beginners to
+              advanced dancers.
+            </p>
+            <a href="#" class="read-more">Read more →</a>
+          </article>
+
+          <article class="news-item">
+            <h3>Interview Feature</h3>
+            <div class="date">March 5, 2025</div>
+            <p>
+              Monique was recently featured in Dance Magazine discussing her approach to choreography and the intersection of movement and
+              storytelling.
+            </p>
+            <a href="#" class="read-more">Read more →</a>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
