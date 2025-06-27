@@ -1,6 +1,9 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: seungdance/Monique-Smith-McDowell
   branch: main
+  base_url: https://moniquewebsite.netlify.app
+  auth_endpoint: auth
 
 local_backend: true
 
