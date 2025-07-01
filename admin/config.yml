@@ -3,7 +3,7 @@ backend:
   repo: seungdance/Monique-Smith-McDowell
   branch: main
   base_url: https://moniquewebsite.netlify.app
-  auth_endpoint: auth
+  auth_endpoint: /.netlify/functions/auth
 
 local_backend: true
 
