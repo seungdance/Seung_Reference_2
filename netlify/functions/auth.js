@@ -4,11 +4,29 @@ exports.handler = async (event, context) => {
   console.log("---- Netlify CMS GitHub Auth ----");
   console.log("HTTP method:", event.httpMethod);
 
+  // Always set CORS headers
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+  };
+
+  // Handle preflight CORS
+  if (event.httpMethod === "OPTIONS") {
+    console.log("CORS preflight (OPTIONS) handled");
+    return {
+      statusCode: 200,
+      headers,
+      body: "OK",
+    };
+  }
+
   // Only allow POST requests
   if (event.httpMethod !== "POST") {
     console.log("Rejected: Method Not Allowed");
     return {
       statusCode: 405,
+      headers,
       body: "Method Not Allowed",
     };
   }
@@ -22,6 +40,7 @@ exports.handler = async (event, context) => {
       console.log("No authorization code provided in body");
       return {
         statusCode: 400,
+        headers,
         body: JSON.stringify({ error: "No authorization code provided" }),
       };
     }
@@ -48,6 +67,7 @@ exports.handler = async (event, context) => {
       console.log("GitHub token exchange error:", tokenData.error_description || tokenData.error);
       return {
         statusCode: 400,
+        headers,
         body: JSON.stringify({ error: tokenData.error_description || "GitHub authentication failed" }),
       };
     }
@@ -77,12 +97,14 @@ exports.handler = async (event, context) => {
       console.log("Repo access denied:", error.message);
       return {
         statusCode: 403,
+        headers,
         body: JSON.stringify({ error: "Access denied to repository" }),
       };
     }
 
     return {
       statusCode: 200,
+      headers,
       body: JSON.stringify({
         access_token: tokenData.access_token,
         user: user,
@@ -92,6 +114,7 @@ exports.handler = async (event, context) => {
     console.error("Auth error (outer catch):", error);
     return {
       statusCode: 500,
+      headers,
       body: JSON.stringify({ error: "Internal server error" }),
     };
   }
