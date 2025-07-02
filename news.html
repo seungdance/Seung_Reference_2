@@ -10,8 +10,6 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <title>Monique - News</title>
-    <!-- Netlify CMS -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <style>
       /* Spring-themed blob background */
       .spring-blob {
@@ -306,118 +304,35 @@
       </div>
 
       <div class="news-content">
-        <div class="news-placeholder" id="news-placeholder" style="display: none">
-          <h2>No news available</h2>
-          <p>We're updating our news section. Please check back later.</p>
-        </div>
-
-        <div class="news-grid" id="news-grid">
-          <!-- News items will be populated here by JavaScript -->
+        <div class="news-grid">
+          <article class="news-item">
+            <h3>New Performance Announced</h3>
+            <div class="date">March 15, 2025</div>
+            <p>
+              We're excited to announce our upcoming performance at the Hamburg Theater. This new piece explores themes of identity and
+              belonging through contemporary dance.
+            </p>
+          </article>
+          <article class="news-item">
+            <h3>Workshop Series Starting</h3>
+            <div class="date">March 10, 2025</div>
+            <p>
+              Join us for a series of movement workshops exploring contemporary dance techniques. Open to all levels, from beginners to
+              advanced dancers.
+            </p>
+          </article>
+          <article class="news-item">
+            <h3>Interview Feature</h3>
+            <div class="date">March 5, 2025</div>
+            <p>
+              Monique was recently featured in Dance Magazine discussing her approach to choreography and the intersection of movement and
+              storytelling.
+            </p>
+          </article>
         </div>
       </div>
     </main>
 
     <script src="script.js"></script>
-
-    <!-- Netlify CMS Script -->
-    <script>
-      // Load news data from Netlify CMS
-      async function loadNews() {
-        try {
-          // In development, you can use local backend
-          // In production, this will load from your _data folder
-          const response = await fetch("/_data/news.json");
-          if (!response.ok) {
-            throw new Error("Failed to load news data");
-          }
-
-          const newsData = await response.json();
-          displayNews(newsData);
-        } catch (error) {
-          console.log("News data not available yet, showing placeholder");
-          showPlaceholder();
-        }
-      }
-
-      function displayNews(newsItems) {
-        const newsGrid = document.getElementById("news-grid");
-        const placeholder = document.getElementById("news-placeholder");
-
-        if (!newsItems || newsItems.length === 0) {
-          showPlaceholder();
-          return;
-        }
-
-        // Sort news items by date (newest first) and then by order
-        const sortedNews = newsItems
-          .filter((item) => item.published !== false)
-          .sort((a, b) => {
-            if (a.order !== b.order) {
-              return a.order - b.order;
-            }
-            return new Date(b.date) - new Date(a.date);
-          });
-
-        if (sortedNews.length === 0) {
-          showPlaceholder();
-          return;
-        }
-
-        placeholder.style.display = "none";
-        newsGrid.innerHTML = "";
-
-        sortedNews.forEach((item) => {
-          const newsItem = createNewsItem(item);
-          newsGrid.appendChild(newsItem);
-        });
-      }
-
-      function createNewsItem(item) {
-        const article = document.createElement("article");
-        article.className = "news-item";
-
-        const formattedDate = new Date(item.date).toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-
-        let imageHtml = "";
-        if (item.image) {
-          imageHtml = `<img src="${item.image}" alt="${item.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">`;
-        }
-
-        article.innerHTML = `
-          ${imageHtml}
-          <h3>${item.title}</h3>
-          <div class="date">${formattedDate}</div>
-          <p>${item.excerpt || item.body}</p>
-        `;
-
-        return article;
-      }
-
-      function showPlaceholder() {
-        const newsGrid = document.getElementById("news-grid");
-        const placeholder = document.getElementById("news-placeholder");
-
-        newsGrid.innerHTML = "";
-        placeholder.style.display = "block";
-      }
-
-      // Load news when page loads
-      document.addEventListener("DOMContentLoaded", loadNews);
-
-      // Netlify Identity redirect
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
-    </script>
   </body>
 </html>
