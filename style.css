@@ -1376,11 +1376,17 @@ body {
   opacity: 0.9;
 }
 
+.contact-links-container {
+  margin: 1rem 0;
+}
+
 .contact-text-item {
   margin: 1rem 0;
   font-family: "Jost", sans-serif;
   font-size: 1.1rem;
   line-height: 1.6;
+  display: inline-block;
+  margin-right: 2rem;
 }
 
 .contact-label {
@@ -1488,5 +1494,27 @@ body {
   html,
   * {
     cursor: auto !important;
+  }
+}
+
+.contact-links-row {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin: 1.2rem 0 1.5rem 0;
+}
+.contact-links-row .contact-label {
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+.contact-links-row a {
+  display: flex;
+  align-items: center;
+}
+@media (max-width: 700px) {
+  .contact-links-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
   }
 }
