@@ -162,6 +162,56 @@ body {
   }
 }
 
+/* Enhanced mobile detection for Samsung Galaxy and other touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor,
+  #custom-cursor {
+    display: none !important;
+  }
+  body {
+    cursor: auto !important;
+  }
+}
+
+/* Additional Samsung Galaxy specific rules */
+@media screen and (max-width: 768px), screen and (max-device-width: 768px), screen and (max-width: 1024px) and (orientation: portrait) {
+  .custom-cursor,
+  #custom-cursor {
+    display: none !important;
+  }
+  body {
+    cursor: auto !important;
+  }
+}
+
+/* Samsung Galaxy and Android specific rules */
+@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-width: 1024px),
+  screen and (max-width: 1024px) and (orientation: portrait),
+  screen and (max-device-width: 1024px) {
+  .custom-cursor,
+  #custom-cursor {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  body {
+    cursor: auto !important;
+  }
+}
+
+/* Force hide cursor on all touch devices */
+@media (pointer: coarse) {
+  .custom-cursor,
+  #custom-cursor {
+    display: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+  body {
+    cursor: auto !important;
+  }
+}
+
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -1059,10 +1109,23 @@ body:active::after {
     cursor: auto !important;
   }
 }
-body,
-a,
-button {
-  cursor: none !important;
+
+/* Only apply cursor: none on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  body,
+  a,
+  button {
+    cursor: none !important;
+  }
+}
+
+/* For touch devices, use default cursor */
+@media (hover: none) and (pointer: coarse) {
+  body,
+  a,
+  button {
+    cursor: auto !important;
+  }
 }
 
 /* Pilates main card and background canvas styles */
@@ -1403,5 +1466,27 @@ body {
 
   .contact-welcome-text p {
     margin: 0 auto;
+  }
+}
+
+/* Final comprehensive mobile cursor hiding - ensures no custom cursor appears on any mobile device */
+@media (max-width: 1024px), (max-device-width: 1024px), (orientation: portrait), (pointer: coarse), (hover: none) {
+  .custom-cursor,
+  #custom-cursor,
+  .custom-cursor *,
+  #custom-cursor * {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+  }
+
+  body,
+  html,
+  * {
+    cursor: auto !important;
   }
 }
