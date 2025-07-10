@@ -51,9 +51,35 @@ function draw() {
 }
 draw();
 
-// Utility: Detect touch device
+// Utility: Detect touch device - Enhanced for Samsung Galaxy and other mobile devices
 function isTouchDevice() {
-  return "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+  // Check for touch support
+  const hasTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
+  // Check for mobile user agent (includes Samsung Galaxy)
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  // Check for Samsung Galaxy specifically
+  const isSamsung = /Samsung|SM-/i.test(navigator.userAgent);
+
+  // Check for coarse pointer (touch screen)
+  const hasCoarsePointer = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+
+  // Check for hover capability
+  const hasHover = window.matchMedia && window.matchMedia("(hover: hover)").matches;
+
+  // Debug logging
+  console.log("Touch Device Detection:", {
+    hasTouch,
+    isMobile,
+    isSamsung,
+    hasCoarsePointer,
+    hasHover,
+    userAgent: navigator.userAgent,
+  });
+
+  // Return true if any of these indicate a touch device
+  return hasTouch || isMobile || isSamsung || hasCoarsePointer || !hasHover;
 }
 
 // Create and initialize custom cursor
@@ -83,6 +109,35 @@ if (!isTouchDevice()) {
         customCursor.classList.remove("hovered");
       });
     });
+  });
+} else {
+  // For touch devices, ensure cursor is hidden
+  document.addEventListener("DOMContentLoaded", () => {
+    const customCursor = document.querySelector(".custom-cursor");
+    const customCursorAlt = document.querySelector("#custom-cursor");
+
+    if (customCursor) {
+      customCursor.style.display = "none";
+    }
+    if (customCursorAlt) {
+      customCursorAlt.style.display = "none";
+    }
+
+    // Reset body cursor for touch devices
+    document.body.style.cursor = "auto";
+
+    // Additional Samsung Galaxy specific handling
+    const isSamsung = /Samsung|SM-/i.test(navigator.userAgent);
+    if (isSamsung) {
+      // Force hide cursor on Samsung devices
+      document.documentElement.style.setProperty("--cursor-display", "none");
+      const allCursors = document.querySelectorAll(".custom-cursor, #custom-cursor");
+      allCursors.forEach((cursor) => {
+        cursor.style.display = "none";
+        cursor.style.opacity = "0";
+        cursor.style.pointerEvents = "none";
+      });
+    }
   });
 }
 
