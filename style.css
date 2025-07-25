@@ -379,19 +379,20 @@ nav a:hover::after {
 
   .bio-text {
     font-size: 1.08rem;
-    line-height: 1.85;
-    max-width: 85%;
+    line-height: 1.6;
+    max-width: 90%;
     margin: 0 auto;
     padding: 0;
   }
 
   .bio-text p {
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
     text-align: justify;
     text-justify: inter-word;
-    hyphens: manual;
-    -webkit-hyphens: manual;
-    -ms-hyphens: manual;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    text-shadow: 0 0 0.5px rgba(0, 0, 0, 0.1);
   }
 
   .bio-text p:last-child {
@@ -405,18 +406,13 @@ nav a:hover::after {
 }
 
 @media (max-width: 480px) {
-  .bio-content {
-    gap: 2.5rem;
-  }
-
   .bio-text {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    max-width: 90%;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 98%;
   }
-
   .bio-text p {
-    margin-bottom: 1.8rem;
+    margin-bottom: 1rem;
   }
 }
 
