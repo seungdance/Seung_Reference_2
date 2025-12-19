@@ -5,51 +5,60 @@ function toggleLanguage(lang) {
   const enElements = document.querySelectorAll("[data-en]");
   const deElements = document.querySelectorAll("[data-de]");
 
+  if (enBtn && deBtn) {
+    if (lang === "en") {
+      enBtn.classList.add("active");
+      deBtn.classList.remove("active");
+    } else {
+      deBtn.classList.add("active");
+      enBtn.classList.remove("active");
+    }
+  }
+
   if (lang === "en") {
-    enBtn.classList.add("active");
-    deBtn.classList.remove("active");
     enElements.forEach((el) => (el.style.display = "block"));
     deElements.forEach((el) => (el.style.display = "none"));
   } else {
-    deBtn.classList.add("active");
-    enBtn.classList.remove("active");
     enElements.forEach((el) => (el.style.display = "none"));
     deElements.forEach((el) => (el.style.display = "block"));
   }
 }
 
+// Only initialize canvas if it exists on the page
 const canvas = document.getElementById("interactive-bg");
-const ctx = canvas.getContext("2d");
+if (canvas) {
+  const ctx = canvas.getContext("2d");
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  let mouseX = 0;
+  let mouseY = 0;
+  document.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const radius = 80;
+    const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, radius);
+    gradient.addColorStop(0, "rgba(255, 200, 200, 0.5)");
+    gradient.addColorStop(1, "rgba(255, 200, 200, 0)");
+
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(mouseX, mouseY, radius, 0, Math.PI * 2);
+    ctx.fill();
+
+    requestAnimationFrame(draw);
+  }
+  draw();
 }
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-
-let mouseX = 0;
-let mouseY = 0;
-document.addEventListener("mousemove", (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
-
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  const radius = 80;
-  const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, radius);
-  gradient.addColorStop(0, "rgba(255, 200, 200, 0.5)");
-  gradient.addColorStop(1, "rgba(255, 200, 200, 0)");
-
-  ctx.fillStyle = gradient;
-  ctx.beginPath();
-  ctx.arc(mouseX, mouseY, radius, 0, Math.PI * 2);
-  ctx.fill();
-
-  requestAnimationFrame(draw);
-}
-draw();
 
 // Utility: Detect touch device - Enhanced for Samsung Galaxy and other mobile devices
 function isTouchDevice() {
