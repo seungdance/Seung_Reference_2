@@ -208,6 +208,26 @@
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
       }
 
+      .news-item.breaking-news {
+        border-left: 6px solid #ff2a2a;
+        background: linear-gradient(135deg, #fff7f7 0%, #ffffff 55%, #fff0e6 100%);
+        box-shadow: 0 12px 30px rgba(255, 42, 42, 0.18);
+      }
+
+      .breaking-label {
+        display: inline-block;
+        background: #ff2a2a;
+        color: #fff;
+        font-family: "Jost", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        margin-bottom: 1rem;
+      }
+
       .news-item h3 {
         color: #333;
         font-size: 2.5rem;
@@ -217,9 +237,10 @@
 
       .news-item .date {
         color: #000;
-        font-size: 1.8rem;
+        font-size: 2rem;
         margin-bottom: 1rem;
-        font-weight: 500;
+        font-weight: 600;
+        text-align: center;
       }
 
       .news-item p {
@@ -327,6 +348,16 @@
 
       <div class="news-content">
         <div class="news-grid">
+          <div class="news-item breaking-news">
+            <div class="breaking-label" data-en>New</div>
+            <div class="breaking-label" data-de>Neu</div>
+            <h3 data-en>World premiere: The Uprising</h3>
+            <h3 data-de>Weltpremiere: The Uprising</h3>
+            <img src="website photos/the_UPRISING-digital.png" alt="The Uprising world premiere" />
+            <div class="date" data-en>20-23 May at Kampnagel, Hamburg</div>
+            <div class="date" data-de>20.-23. Mai @ Kampngel, Hamburg</div>
+          </div>
+
           <div class="news-item">
             <h3 data-en>Up and coming performance of In&nbsp;the&nbsp;Black!</h3>
             <h3 data-de>Kommende Aufführung von In the Black!</h3>
@@ -337,31 +368,6 @@
         </div>
       </div>
     </main>
-
-    <footer class="site-footer">
-      <div class="footer" data-en>
-        <span>© 2025 Monique Smith-McDowell.</span>
-        <br class="mobile-break" />
-        <span>Website built by Seung Hwan Lee.</span>
-        <br class="mobile-break" />
-        <span style="font-size: 0.85rem; margin-top: 0.5rem; display: inline-block;">
-          <a href="impressum.html" style="color: #aaa; margin: 0 0.5rem;">Impressum</a>
-          <span style="color: #aaa;">|</span>
-          <a href="datenschutz.html" style="color: #aaa; margin: 0 0.5rem;">Privacy Policy</a>
-        </span>
-      </div>
-      <div class="footer" data-de>
-        <span>© 2025 Monique Smith-McDowell.</span>
-        <br class="mobile-break" />
-        <span>Webseite erstellt von Seung Hwan Lee.</span>
-        <br class="mobile-break" />
-        <span style="font-size: 0.85rem; margin-top: 0.5rem; display: inline-block;">
-          <a href="impressum.html" style="color: #aaa; margin: 0 0.5rem;">Impressum</a>
-          <span style="color: #aaa;">|</span>
-          <a href="datenschutz.html" style="color: #aaa; margin: 0 0.5rem;">Datenschutzerklärung</a>
-        </span>
-      </div>
-    </footer>
 
     <script src="script.js"></script>
   </body>
